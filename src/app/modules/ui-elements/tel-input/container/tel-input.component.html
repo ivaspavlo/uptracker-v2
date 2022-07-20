@@ -1,0 +1,12 @@
+
+<form [formGroup]="form" class="app-tel-input">
+
+  <ngx-flag-picker
+    [selectedCountryCode]="ctrls.country_code.value | mapDialCode"
+    [countryCodes]="countryCodes | keys"
+    (click)="onClickFlagPicker($event)"
+    (changedCountryCode)="onChangeCountryCode($event)">
+  </ngx-flag-picker>
+
+  <input #telInput (blur)="checkForErrors()" type="string" formControlName="phone_number">
+</form>

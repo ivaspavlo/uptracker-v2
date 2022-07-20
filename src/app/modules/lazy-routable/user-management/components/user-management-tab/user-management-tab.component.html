@@ -1,0 +1,71 @@
+
+<div class="container-fluid p-0 height-100 pos-relative">
+
+  <div class="table-wrap">
+  
+    <table mat-table [dataSource]="dataSource" matSort [hidden]="!(users && users.length)" class="width-100">
+
+      <ng-container matColumnDef="person">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="name">NAME</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="d-flex align-items-center height-100">
+            <figure class="user-avatar overflow-hidden d-flex justify-content-center align-items-center bg-primary" [ngClass]="{ 'user-avatar--with-border': !element.avatar }">
+              <img *ngIf="element.avatar" [src]="element.avatar" alt="Avatar" class="width-100">
+              <img *ngIf="!element.avatar" src="/assets/img/svg/user-grey.svg" alt="No Avatar" class="user-avatar__plh">
+            </figure>
+            <span class="font-12">{{ element.name }}</span>
+          </div>
+        </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="email_address">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>EMAIL</th>
+        <td mat-cell *matCellDef="let element">{{ element.email_address }}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ROLE</th>
+        <td mat-cell *matCellDef="let element">{{ element.role | titlecase }}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="locations">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="locations_table_name">LOCATIONS</th>
+        <td mat-cell *matCellDef="let element">{{ element.locations_table_name }}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="tab_name">
+        <th mat-header-cell *matHeaderCellDef class="text-align-right">ACTIONS</th>
+        <td mat-cell *matCellDef="let element" class="pos-relative">
+          <ng-container *ngIf="tabName === tabs.archived">
+            <div class="reactivate-btn d-flex justify-content-end align-items-center pos-absolute height-100">
+              <button mat-icon-button matTooltip="Reactivate User" (click)="reactivateUser.emit(element)" class="mat-icon-button--stroked"><mat-icon svgIcon="off-blue" class="off-blue-icon"></mat-icon></button>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="tabName !== tabs.archived">
+            <div class="menu-btn justify-content-end align-items-center pos-absolute height-100">
+              <button mat-icon-button><mat-icon svgIcon="dots" class="dots-icon"></mat-icon></button>
+            </div>
+            <div class="ctrls justify-content-end align-items-center pos-absolute height-100 bg-white">
+              <app-management-btns
+                [tabName]="tabName"
+                (editInvite)="editInvite.emit(element)"
+                (reinvite)="reInvite.emit(element)"
+                (deleteInvite)="deleteInvite.emit(element)"
+                (editUser)="editUser.emit(element)"
+                (archiveUser)="archiveUser.emit(element)"
+              ></app-management-btns>
+            </div>
+          </ng-container>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  
+  </div>
+
+  <app-no-users-plh (invite)="invite.emit()" *ngIf="users && !users?.length"></app-no-users-plh>
+
+</div>

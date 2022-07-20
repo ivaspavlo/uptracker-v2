@@ -1,0 +1,12 @@
+
+<section>
+  <div
+    class="toast pos-relative"
+    [ngClass]="{
+      'info': data.type === toastTypes.info,
+      'success': data.type === toastTypes.success,
+      'error': data.type === toastTypes.error
+    }"
+  >{{ data.msg }}</div>
+  <i class="close-icon hover-opacity cursor-pointer pos-absolute" (click)="snackBarRef.dismiss()"></i>
+</section>

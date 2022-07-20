@@ -1,0 +1,122 @@
+
+@import 'mixins/_all';
+
+.m-rem-0_5 { margin: 0.5rem; }
+.m-rem-0_75 { margin: 0.75rem; }
+.m-rem-1 { margin: 1rem; }
+.m-rem-1_5 { margin: 1.5rem; }
+.m-rem-1_75 { margin: 1.75rem; }
+.m-rem-2 { margin: 2rem; }
+.m-rem-2_5 { margin: 2.5rem; }
+.m-rem-2_75 { margin: 2.75rem; }
+.m-rem-3 { margin: 3rem; }
+.m-rem-3_5 { margin: 3.5rem; }
+.m-rem-3_75 { margin: 3.75rem; }
+.m-rem-4 { margin: 4rem; }
+.m-rem-4_5 { margin: 4.5rem; }
+.m-rem-4_75 { margin: 4.75rem; }
+
+.mx-rem-0_5 { margin-left: 0.5rem; margin-right: 0.5rem; }
+.mx-rem-0_75 { margin-left: 0.75rem; margin-right: 0.75rem; }
+.mx-rem-1 { margin-left: 1rem; margin-right: 1rem; }
+.mx-rem-1_5 { margin-left: 1.5rem; margin-right: 1rem; }
+.mx-rem-1_75 { margin-left: 1.75rem; margin-right: 1.75rem; }
+.mx-rem-2 { margin-left: 2rem; margin-right: 2rem; }
+.mx-rem-2_5 { margin-left: 2.5rem; margin-right: 2.5rem; }
+.mx-rem-2_75 { margin-left: 2.75rem; margin-right: 2.75rem; }
+.mx-rem-3 { margin-left: 3rem; margin-right: 3rem; }
+.mx-rem-3_5 { margin-left: 3.5rem; margin-right: 3.5rem; }
+.mx-rem-3_75 { margin-left: 3.75rem; margin-right: 3.75rem; }
+.mx-rem-4 { margin-left: 4rem; margin-right: 4rem; }
+.mx-rem-4_5 { margin-left: 4.5rem; margin-right: 4.5rem; }
+
+.my-rem-0_5 { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+.my-rem-0_75 { margin-top: 0.75rem; margin-bottom: 0.75rem; }
+.my-rem-1 { margin-top: 1rem; margin-bottom: 1rem; }
+.my-rem-1_5 { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+.my-rem-1_75 { margin-top: 1.75rem; margin-bottom: 1.75rem; }
+.my-rem-2 { margin-top: 2rem; margin-bottom: 2rem; }
+.my-rem-2_5 { margin-top: 2.5rem; margin-bottom: 2.5rem; }
+.my-rem-2_75 { margin-top: 2.75rem; margin-bottom: 2.75rem; }
+.my-rem-3 { margin-top: 3rem; margin-bottom: 3rem; }
+.my-rem-3_5 { margin-top: 3.5rem; margin-bottom: 3.5rem; }
+.my-rem-3_75 { margin-top: 3.75rem; margin-bottom: 3.75rem; }
+.my-rem-4 { margin-top: 4rem; margin-bottom: 4rem; }
+.my-rem-4_5 { margin-top: 4.5rem; margin-bottom: 4.5rem; }
+.my-rem-4_75 { margin-top: 4.75rem; margin-bottom: 4.75rem; }
+
+.mr-rem-0_5 { margin-right: 0.5rem; }
+.mr-rem-0_75 { margin-right: 0.75rem; }
+.mr-rem-1 { margin-right: 1rem !important; }
+.mr-rem-1_5 { margin-right: 1.5rem !important; }
+.mr-rem-1_75 { margin-right: 1.75rem !important; }
+.mr-rem-2 { margin-right: 2rem !important; }
+.mr-rem-2_5 { margin-right: 2.5rem !important; }
+.mr-rem-2_75 { margin-right: 2.75rem; }
+.mr-rem-3 { margin-right: 3rem; }
+.mr-rem-3_5 { margin-right: 3.5rem; }
+.mr-rem-3_75 { margin-right: 3.75rem; }
+.mr-rem-4 { margin-right: 4rem; }
+.mr-rem-4_5 { margin-right: 4.5rem; }
+.mr-rem-4_75 { margin-right: 4.75rem; }
+
+.ml-rem-0_5 { margin-left: 0.5rem; }
+.ml-rem-0_75 { margin-left: 0.75rem; }
+.ml-rem-1 { margin-left: 1rem; }
+.ml-rem-1_5 { margin-left: 1.5rem; }
+.ml-rem-1_75 { margin-left: 1.75rem; }
+.ml-rem-2 { margin-left: 2rem; }
+.ml-rem-2_5 { margin-left: 2.5rem; }
+.ml-rem-2_75 { margin-left: 2.75rem; }
+.ml-rem-3 { margin-left: 3rem; }
+.ml-rem-3_5 { margin-left: 3.5rem; }
+.ml-rem-3_75 { margin-left: 3.75rem; }
+.ml-rem-4 { margin-left: 4rem; }
+.ml-rem-4_5 { margin-left: 4.5rem; }
+.ml-rem-4_75 { margin-left: 4.75rem; }
+
+.mt-rem-0_5 { margin-top: 0.5rem; }
+.mt-rem-0_75 { margin-top: 0.75rem; }
+.mt-rem-1 { margin-top: 1rem; }
+.mt-rem-1_5 { margin-top: 1.5rem; }
+.mt-rem-1_75 { margin-top: 1.75rem; }
+.mt-rem-2 { margin-top: 2rem; }
+.mt-rem-2_5 { margin-top: 2.5rem; }
+.mt-rem-2_75 { margin-top: 2.75rem; }
+.mt-rem-3 { margin-top: 3rem; }
+.mt-rem-3_5 { margin-top: 3.5rem; }
+.mt-rem-3_75 { margin-top: 3.75rem; }
+.mt-rem-4 { margin-top: 4rem; }
+.mt-rem-4_5 { margin-top: 4.5rem; }
+.mt-rem-4_75 { margin-top: 4.75rem; }
+
+.mb-rem-0_5 { margin-bottom: 0.5rem; }
+.mb-rem-0_75 { margin-bottom: 0.75rem; }
+.mb-rem-1 { margin-bottom: 1rem; }
+.mb-rem-1_5 { margin-bottom: 1.5rem; }
+.mb-rem-1_75 { margin-bottom: 1.75rem; }
+.mb-rem-2 { margin-bottom: 2rem; }
+.mb-rem-2_5 { margin-bottom: 2.5rem; }
+.mb-rem-2_75 { margin-bottom: 2.75rem; }
+.mb-rem-3 { margin-bottom: 3rem; }
+.mb-rem-3_5 { margin-bottom: 3.5rem; }
+.mb-rem-3_75 { margin-bottom: 3.75rem; }
+.mb-rem-4 { margin-bottom: 4rem; }
+.mb-rem-4_5 { margin-bottom: 4.5rem; }
+.mb-rem-4_75 { margin-bottom: 4.75rem; }
+
+@include sm {
+
+}
+
+@include md {
+
+}
+
+@include lg {
+
+}
+
+@include xl {
+
+}

@@ -1,0 +1,26 @@
+
+<div class="max-width-600 row no-gutters d-flex">
+
+  <header class="col-12">
+    <p class="color-grey-500 line-height-16 font-weight-400">Please fill in your billing details. You can change your billing info later on the “Account Settings” page</p>
+  </header>
+
+  <div class="col-12 my-rem-2_5">
+    <app-credit-card [card]="currentCard$ | async"></app-credit-card>
+  </div>
+
+  <div class="col-12 m-b-5">
+    <app-card-form (formIsReady)="cardForm = $event" [stripeError]="stripeError$ | async"></app-card-form>
+  </div>
+
+  <div class="col-12 d-flex justify-content-between align-items-center mt-px-3 mb-rem-2_5">
+    <button
+      mat-flat-button color="primary"
+      (click)="onSubmit()"
+      [disabled]="!cardForm.valid"
+      [appSpinner]="isLoading"
+    >SAVE THIS CARD</button>
+    <p *ngIf="(stripeErrorMsg$ | async) as msg" class="color-warning">{{ msg }}</p>
+  </div>
+
+</div>

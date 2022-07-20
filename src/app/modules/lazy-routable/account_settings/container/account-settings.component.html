@@ -1,0 +1,11 @@
+<app-acc-settings
+[fieldMap]="fieldMap"
+[form]="form"
+(tab)="onTabChanged($event)"
+[billingEmail$]="billingEmail$"
+[isFormLoading]="isLoading$ | async"
+[cards$]="cards$"
+[currentTab]="currentTab$ | async"
+(locationSelected)="onLocationSelected($event)"
+(formSubmit)="onSubmit($event)"></app-acc-settings>
+

@@ -1,0 +1,105 @@
+
+@import 'mixins/_all';
+
+.font-8 { font-size: 8px; }
+.font-10 { font-size: 10px; }
+.font-12 { font-size: 12px; }
+.font-14 { font-size: 14px; }
+.font-16 { font-size: 16px; }
+.font-18 { font-size: 18px; }
+
+.font-20 { font-size: 20px; }
+.font-24 { font-size: 24px; }
+.font-26 { font-size: 26px; }
+.font-28 { font-size: 28px; }
+
+.font-30 { font-size: 30px; }
+.font-36 { font-size: 36px; }
+
+.font-40 { font-size: 40px; }
+.font-42 { font-size: 42px; }
+.font-60 { font-size: 60px; }
+
+@include sm {
+  .font-sm-8 { font-size: 8px; }
+  .font-sm-10 { font-size: 10px; }
+  .font-sm-12 { font-size: 12px; }
+  .font-sm-14 { font-size: 14px; }
+  .font-sm-16 { font-size: 16px; }
+  .font-sm-18 { font-size: 18px; }
+
+  .font-sm-20 { font-size: 20px; }
+  .font-sm-24 { font-size: 24px; }
+  .font-sm-26 { font-size: 26px; }
+  .font-sm-28 { font-size: 28px; }
+
+  .font-sm-30 { font-size: 30px; }
+  .font-sm-36 { font-size: 36px; }
+
+  .font-sm-40 { font-size: 40px; }
+  .font-sm-42 { font-size: 42px; }
+  .font-sm-60 { font-size: 60px; }
+}
+
+@include md {
+  .font-md-8 { font-size: 8px; }
+  .font-md-10 { font-size: 10px; }
+  .font-md-12 { font-size: 12px; }
+  .font-md-14 { font-size: 14px; }
+  .font-md-16 { font-size: 16px; }
+  .font-md-18 { font-size: 18px; }
+
+  .font-md-20 { font-size: 20px; }
+  .font-md-24 { font-size: 24px; }
+  .font-md-26 { font-size: 26px; }
+  .font-md-28 { font-size: 28px; }
+
+  .font-md-30 { font-size: 30px; }
+  .font-md-36 { font-size: 36px; }
+
+  .font-md-40 { font-size: 40px; }
+  .font-md-42 { font-size: 42px; }
+  .font-md-60 { font-size: 60px; }
+}
+
+@include lg {
+  .font-lg-8 { font-size: 8px; }
+  .font-lg-10 { font-size: 10px; }
+  .font-lg-12 { font-size: 12px; }
+  .font-lg-14 { font-size: 14px; }
+  .font-lg-16 { font-size: 16px; }
+  .font-lg-18 { font-size: 18px; }
+
+  .font-lg-20 { font-size: 20px; }
+  .font-lg-24 { font-size: 24px; }
+  .font-lg-26 { font-size: 26px; }
+  .font-lg-28 { font-size: 28px; }
+
+  .font-lg-30 { font-size: 30px; }
+  .font-lg-36 { font-size: 36px; }
+
+  .font-lg-40 { font-size: 40px; }
+  .font-lg-42 { font-size: 42px; }
+  .font-lg-60 { font-size: 60px; }
+}
+
+@include xl {
+  .font-xl-8 { font-size: 8px; }
+  .font-xl-10 { font-size: 10px; }
+  .font-xl-12 { font-size: 12px; }
+  .font-xl-14 { font-size: 14px; }
+  .font-xl-16 { font-size: 16px; }
+  .font-xl-18 { font-size: 18px; }
+
+  .font-xl-20 { font-size: 20px; }
+  .font-xl-24 { font-size: 24px; }
+  .font-xl-26 { font-size: 26px; }
+  .font-lg-28 { font-size: 28px; }
+
+  .font-xl-30 { font-size: 30px; }
+  .font-xl-36 { font-size: 36px; }
+
+  .font-xl-40 { font-size: 40px; }
+  .font-xl-42 { font-size: 42px; }
+  .font-xl-60 { font-size: 60px; }
+}

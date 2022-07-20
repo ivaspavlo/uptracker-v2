@@ -1,0 +1,15 @@
+
+<div class="chips d-flex pt-rem-0_75 px-rem-0_75 align-items-top width-100 b-radius-4 flex-wrap">
+  <div
+    *ngFor="let item of (chips$ | async); let idx = index;"
+    class="chips__item height-100 d-flex b-radius-6 font-weight-400 mr-rem-0_75 mb-rem-0_75">
+      {{ item.value }}
+      <i class="chips__close-icon mx-px-10" (click)="onDeleteChip(idx)"></i>
+  </div>
+  <input
+    type="text"
+    #chipsInput
+    (keydown.enter)="onEnter($event.target.value)"
+    placeholder="Email"
+    class="chips__input font-16 flex-grow-1 mb-rem-0_75">
+</div>

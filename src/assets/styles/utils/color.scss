@@ -1,0 +1,32 @@
+
+@import '~@angular/material/theming';
+@import 'mixins/_all';
+@import '_colors';
+
+.color-primary { color: map-get($uptracker-brown, 800); }
+.color-secondary { color: mat-color($uptracker-blue, 300); }
+
+.color-white { color: #fff; }
+.color-black { color: #000; }
+.color-tealish { color: $tealish; }
+.color-green { color: $green; }
+.color-warning { color: $warning; }
+
+.color-grey-100 { color: mat-color($uptracker-brown, 100); }
+.color-grey-200 { color: mat-color($uptracker-brown, 200); }
+.color-grey-300 { color: mat-color($uptracker-brown, 300); }
+.color-grey-400 { color: mat-color($uptracker-brown, 400); }
+.color-grey-500 { color: mat-color($uptracker-brown, 500); }
+.color-grey-600 { color: mat-color($uptracker-brown, 600); }
+.color-grey-700 { color: mat-color($uptracker-brown, 700); }
+.color-grey-900 { color: mat-color($uptracker-brown, 900); }
+
+.color-blue-400 { color: mat-color($uptracker-blue, 400); }
+
+@include sm { }
+
+@include md { }
+
+@include lg { }
+
+@include xl { }

@@ -1,0 +1,30 @@
+
+@import '~@angular/material/theming';
+@import '_colors';
+
+@mixin progress-bar-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  mat-progress-bar.mat-progress-bar {
+    height: 8px;
+    border-radius: 2px;
+    .mat-progress-bar-buffer { background-color: map-get($uptracker-brown, 100); }
+    .mat-progress-bar-fill::after { background-color: $green; }
+
+    &.mat-accent {
+      height: 10px;
+      border-radius: 5px;
+      border:  1px solid map-get($uptracker-blue, 400);
+      .mat-progress-bar-buffer { background-color: white }
+    }
+    &.mat-primary {
+      height: 10px;
+      border-radius: 5px;
+      border:  1px solid $green;
+      .mat-progress-bar-buffer { background-color: white }
+      .mat-progress-bar-fill::after { background-color: $green; }
+    }
+  }
+}

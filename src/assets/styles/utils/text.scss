@@ -1,0 +1,25 @@
+
+@import 'mixins/_all';
+
+.text-transform-uppercase { text-transform: uppercase; }
+
+.text-nowrap { white-space: nowrap; }
+
+.text-overflow-ellipsis { text-overflow: ellipsis; }
+
+.letter-spacing-primary { letter-spacing: .4px; }
+
+.text-align-center { text-align: center; }
+.text-align-right { text-align: right; }
+.text-align-left { text-align: left; }
+
+.text-decoration-underline { text-decoration: underline; };
+.text-decoration-line-through { text-decoration: line-through; };
+
+@include sm { }
+
+@include md { }
+
+@include lg { }
+
+@include xl { }

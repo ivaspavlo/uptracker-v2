@@ -1,0 +1,16 @@
+
+<section class="container-fluid p-0">
+  
+  <div class="row no-gutters">
+    <ng-container *ngFor="let plan of plans">
+      <app-plan
+        [promo]="promo"
+        [plan]="plan"
+        [isAnyPlanSelected]="isAnyPlanSelected"
+        (selected)="planChange.emit($event)"
+        (qtyChange)="qtyChange.emit($event)"
+      ></app-plan>
+    </ng-container>
+  </div>
+
+</section>

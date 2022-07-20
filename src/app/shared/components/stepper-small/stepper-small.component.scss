@@ -1,0 +1,37 @@
+
+@import '_colors';
+@import 'mixins/_all';
+
+.stepper-container { height: 5.75rem; }
+
+.step {
+  min-width: 5rem;
+  height: 3rem;
+  border: 1px solid;
+  transition: .3s;
+  cursor: pointer;
+  @include e('check-icon') {
+    content: '';
+    width: 16px; height: 13px;
+    margin: 0 14px 0 4px;
+    display: flex;
+    background: center / contain no-repeat url('/assets/img/svg/check-green.svg');
+  }
+  @include m('regular') {
+    background-color: #fff;
+    border-color: mat-color($uptracker-brown, A200);
+    p { color: mat-color($uptracker-brown, A800); }
+    &:hover { background-color: #F8F9FF; border-color: mat-color($uptracker-brown, A800); }
+  }
+  @include m('current') {
+    background-color: mat-color($uptracker-brown, 800);
+    border-color: transparent;
+    p { color: #fff; }
+  }
+  @include m('disabled') {
+    background-color: #fff;
+    border-color: mat-color($uptracker-brown, A300);
+    cursor: default;
+    p { color: mat-color($uptracker-brown, 500); }
+  }
+}

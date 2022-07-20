@@ -1,0 +1,37 @@
+
+<form class="row no-gutters" [formGroup]="form">
+  
+  <ng-container *ngFor="let field of fieldMap.values()">
+    <mat-form-field
+      *ngIf="field.visible"
+      appearance="outline"
+      [ngClass]="field.class" class="form-field-wrapper width-100">
+
+      <mat-label>{{ field.label }}</mat-label>
+  
+      <input
+        *ngIf="field.formControlType === ctrlTypes.Input"
+        matInput
+        [appInputMask]="field.mask"
+        [required]="field.requiredLabel"
+        [type]="field.type"
+        [disabled]="field.disabled"
+        [formControlName]="field.formControlName"
+        [errorStateMatcher]="field.errorStateMatcher"
+        [placeholder]="field.placeholder"/>
+
+      <mat-select
+        *ngIf="field.formControlType === ctrlTypes.Select"
+        [formControlName]="field.formControlName"
+        [required]="field.requiredLabel">
+          <mat-option *ngFor="let opt of field.options" [value]="opt.value">{{ opt.displayName }}</mat-option>
+      </mat-select>
+
+      <mat-icon matSuffix *ngIf="field.icon" [svgIcon]="field.icon"></mat-icon>
+
+      <mat-error *ngFor="let error of field.currentErrors">{{ error.message }}</mat-error>
+
+    </mat-form-field>
+  </ng-container>
+
+</form>

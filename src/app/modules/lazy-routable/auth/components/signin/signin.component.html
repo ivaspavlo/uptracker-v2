@@ -1,0 +1,51 @@
+
+<section class="container-fluid height-100 d-flex flex-column pos-relative p-0">
+
+  <app-auth-header title="Sign up" subTitle="Free 15 day full featured trial" class="px-rem-4"></app-auth-header>
+
+  <div class="pos-relative overflow-auto flex-grow-1">
+    <div class="pos-absolute height-100">
+      <form [formGroup]="form" class="row no-gutters px-rem-4">
+
+        <ng-container *ngFor="let field of fieldMap.values()">
+          <mat-form-field appearance="outline" *ngIf="field.visible" class="col-12 form-field-wrapper">
+
+            <mat-label>{{ field.label }}</mat-label>
+
+            <input
+              matInput
+              *ngIf="field.formControlType === FormControlType.Input"
+              [type]="field.type | signinInputType:field.showPwd"
+              [disabled]="field.disabled"
+              [formControlName]="field.formControlName"
+              [placeholder]="field.placeholder">
+
+            <button type="button" *ngIf="field.type === 'password'" tabindex="-1" mat-icon-button matSuffix (click)="$event.preventDefault(); field.showPwd = !field.showPwd;">
+              <mat-icon class="eye-icon">{{ !!field.showPwd ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+
+            <mat-error *ngFor="let error of field.currentErrors">{{ error.message }}</mat-error>
+
+          </mat-form-field>
+        </ng-container>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="row no-gutters border-top-1 pt-px-40 px-rem-4 border-color-grey-100">
+    <div class="col-12 bg-white d-flex justify-content-between">
+      <button mat-flat-button [routerLink]="['/auth/login']" class="up-mini-1"><mat-icon svgIcon="arrow-left-small" class="mr-2"></mat-icon>Back to login</button>
+      <button
+        type="submit"
+        mat-flat-button
+        color="primary"
+        (click)="onSignIn()"
+        [appSpinner]="isLoading$ | async"
+        [disabled]="!form.valid"
+        class="create-btn d-flex flex-grow-1 justify-content-center align-items-center"
+      >CREATE NEW ACCOUNT</button>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,33 @@
+
+@import '_colors';
+@import 'mixins/_all';
+
+.auth {
+  padding: 84px 83px;
+  @include e('content') {
+    max-height: 600px;
+    border-radius: 16px;
+    box-shadow: 0px 9px 15px rgba(67, 74, 139, 0.5);
+    &:before, &:after {
+      content: '';
+      width: 135px; height: 135px;
+      position: absolute;
+      display: block;
+      background: center / contain no-repeat url('/assets/img/svg/bg-dots.svg');
+    }
+    &:before { top: -70px; left: -70px; }
+    &:after { bottom: -70px; right: -70px; }
+  }
+  @include e('outlet-wrap') {
+    padding: 56px 0 40px;
+    @media only screen and (max-width: 992px) {
+      flex-basis: 100%;
+    }
+    @media only screen and (min-width: 993px) {
+      flex-basis: 600px;
+    }
+  }
+  @include e('outlet-wrap-header') { padding-left: 56px; }
+  @include e('logo') { height: 56px; }
+  @include e('title') { p:nth-child(1) { line-height: 33px; } }
+}

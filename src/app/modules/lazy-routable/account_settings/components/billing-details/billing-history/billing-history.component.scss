@@ -1,0 +1,19 @@
+.table-header {
+  display: none;
+}
+//TODO: temporary solution
+table {
+  overflow: hidden;
+}
+td.mat-cell {
+  padding-bottom:7px;
+  padding-top: 7px;
+}
+
+.mat-column-price {
+  width: 90px !important;
+}
+
+.mat-column-paid {
+  padding-right: 8px !important;
+}

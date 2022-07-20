@@ -1,0 +1,12 @@
+
+@import '_colors';
+@import 'mixins/_all';
+
+:host { width: 100%; }
+
+.info {
+  height: 72px;
+  background-color: mat-color($uptracker-brown, A500);
+  @include e('img') { width: 24px; height: 24px; }
+  @include e('link') { color: #5464FF; }
+}

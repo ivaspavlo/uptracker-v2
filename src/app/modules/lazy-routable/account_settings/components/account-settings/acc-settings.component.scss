@@ -1,0 +1,17 @@
+
+
+header {
+  padding: 36px 40px 23px !important;
+}
+
+.main-wrapper {
+  flex: 1;
+}
+
+::ng-deep .mat-tab-body-wrapper {
+  padding: 0px 16px;
+}
+
+// ::ng-deep .mat-tab-header {
+//   padding-left: 25px;
+// }

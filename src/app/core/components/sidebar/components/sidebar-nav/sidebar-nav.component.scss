@@ -1,0 +1,70 @@
+@import "~@angular/material/theming";
+@import "../../../../../../assets/styles/colors";
+
+$border-color: mat-color($uptracker-brown, 800);
+$link-bg-color: mat-color($uptracker-brown, 800);
+
+.uptracker-logo {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sidebar-footer {
+  height: 64px;
+  position: sticky;
+  bottom: 0px;
+  color: mat-color($uptracker-brown, 400);
+  border-top: 1px solid $border-color;
+}
+
+.sidebar-nav-list {
+  margin-top: 13px;
+}
+.sidebar-nav-list-bottom {
+  margin-top: 20px;
+}
+
+.sidebar-link {
+  height: 32px !important;
+  width: 32px !important;
+  border-radius: 5px;
+  margin: 0 0 24px 4px;
+  &.active {
+    background-color: mat-color($uptracker-blue, 400);
+    &:hover {
+      background-color: mat-color($uptracker-blue, 300);
+    }
+  }
+  &:hover {
+    background-color: $link-bg-color;
+  }
+  ::ng-deep .mat-list-item-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &.opened {
+    width: 95% !important;
+    ::ng-deep .mat-list-item-content {
+      justify-content: start;
+      padding-left: 7px;
+    }
+  }
+  .mat-icon {
+    margin-top: 4px;
+  }
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: $tealish;
+  .mat-icon {
+    min-width: 40px;
+  }
+}
+
+.close-sidebar-text {
+  padding-top: 2px;
+}

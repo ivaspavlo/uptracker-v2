@@ -1,0 +1,64 @@
+<div class="header-wrapper">
+
+  <div class="row h-100 m-0">
+    <div class="col-6 h-100 p-0">
+      <div class="d-flex align-items-center h-100 ml-px-40 mr-rem-1">
+        <div
+          *ngIf="isPrevButtonVisible$ | async"
+          (click)="goBack()"
+          class="cursor-pointer
+                d-flex align-items-center
+                justify-content-center
+                border-1 b-radius-4 border-color-grey-300
+                prev-page-button-wrapper mr-px-40">
+            <mat-icon svgIcon="arrow-left-small"></mat-icon>
+        </div>
+        <div class="sm-form-field-wrapper bg-fill header-search-field">
+          <mat-form-field appearance="outline" class="w-100">
+            <input matInput [disabled]="false" placeholder="Search ex. company, product and etc." />
+            <mat-icon matSuffix svgIcon="search-small"></mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 p-0">
+      <div class="d-flex flex-row h-100 align-items-center">
+        <div class="ml-auto sm-form-field-wrapper secondary-color">
+          <mat-form-field appearance="outline" class="max-width-220">
+            <mat-select
+              placeholder="No location added"
+              [ngModel]="currentLocation"
+              (ngModelChange)="onLocationChange($event)"
+              class="mdc-text-field__input">
+              <mat-option [value]="location.id" *ngFor="let location of locations">{{ location.name }}</mat-option>
+            </mat-select>
+            <mat-icon *ngIf='locations.length > 0' class="mat-icon" matPrefix svgIcon="pin"></mat-icon>
+            <mat-icon *ngIf='locations.length === 0' class="mat-icon" matPrefix svgIcon="pin-grey"></mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="cursor-pointer ml-rem-2 mr-px-40 md-icon">
+          <mat-icon svgIcon="shopping-cart"></mat-icon>
+        </div>
+
+        <div class="cursor-pointer mr-px-40 md-icon">
+          <mat-icon svgIcon="ring"></mat-icon>
+        </div>
+
+        <div class="cursor-pointer mr-px-40 overflow-hidden b-radius-100 md-icon">
+          <img class="height-px-50" [src]="avatar" [matMenuTriggerFor]="menu">
+          <mat-menu #menu="matMenu" class="nav-header md-menu">
+            <a mat-menu-item [routerLink]="['/profile']">
+              <mat-icon class="sm-icon" matSuffix svgIcon="profile"></mat-icon>Profile</a>
+            <button mat-menu-item (click)="onClickLogout()">
+              <mat-icon class="sm-icon" matSuffix svgIcon="logout"></mat-icon>Logout</button>
+          </mat-menu>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

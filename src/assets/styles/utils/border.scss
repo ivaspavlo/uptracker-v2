@@ -1,0 +1,64 @@
+
+@import '~@angular/material/theming';
+@import 'mixins/_all';
+@import '_colors';
+
+.divider-primary { height: 1px; width: 100%; background-color: map-get($uptracker-brown, 300); }
+.divider-secondary { height: 1px; width: 100%; background-color: map-get($uptracker-brown, 800); }
+
+.b-radius-2 { border-radius: 2px; }
+.b-radius-4 { border-radius: 4px; }
+.b-radius-6 { border-radius: 6px; }
+.b-radius-16 { border-radius: 16px; }
+.b-radius-100 { border-radius: 100px; }
+
+.border-color-grey-100 { border-color: map-get($uptracker-brown, 100) !important; }
+.border-color-grey-200 { border-color: map-get($uptracker-brown, 200) !important; }
+.border-color-grey-300 { border-color: map-get($uptracker-brown, 300) !important; }
+.border-color-grey-400 { border-color: map-get($uptracker-brown, 400) !important; }
+.border-color-grey-A200 { border-color: map-get($uptracker-brown, A200) !important; }
+.border-color-grey-A300 { border-color: map-get($uptracker-brown, A300) !important; }
+ 
+.border-0 { border: 0; }
+.border-1 { border: 1px solid; }
+.border-2 { border: 2px solid; }
+.border-3 { border: 3px solid; }
+.border-4 { border: 4px solid; }
+
+.border-y-0 { border-top: 0px solid; border-bottom: 0px solid; }
+.border-y-1 { border-top: 1px solid; border-bottom: 1px solid; }
+.border-y-2 { border-top: 2px solid; border-bottom: 2px solid; }
+.border-y-3 { border-top: 3px solid; border-bottom: 3px solid; }
+.border-y-4 { border-top: 4px solid; border-bottom: 4px solid; }
+
+.border-top-0 { border-top: 0px; }
+.border-top-1 { border-top: 1px solid; }
+.border-top-2 { border-top: 2px solid; }
+.border-top-3 { border-top: 3px solid; }
+.border-top-4 { border-top: 4px solid; }
+
+.border-bottom-0 { border-bottom: 0px solid; }
+.border-bottom-1 { border-bottom: 1px solid; }
+.border-bottom-2 { border-bottom: 2px solid; }
+.border-bottom-3 { border-bottom: 3px solid; }
+.border-bottom-4 { border-bottom: 4px solid; }
+
+.border-left-0 { border-left: 0px solid; }
+.border-left-1 { border-left: 1px solid; }
+.border-left-2 { border-left: 2px solid; }
+.border-left-3 { border-left: 3px solid; }
+.border-left-4 { border-left: 4px solid; }
+
+.border-right-0 { border-right: 0px solid; }
+.border-right-1 { border-right: 1px solid; }
+.border-right-2 { border-right: 2px solid; }
+.border-right-3 { border-right: 3px solid; }
+.border-right-4 { border-right: 4px solid; }
+
+@include sm { }
+
+@include md { }
+
+@include lg { }
+
+@include xl { }

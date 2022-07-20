@@ -1,0 +1,34 @@
+
+<section class="auth width-100 height-100 bg-blue-400 container-fluid d-flex flex-column align-items-center justify-content-center">
+
+  <div class="auth__content width-100 pos-relative max-width-1200 flex-grow-1 row no-gutters">
+    <div class="overflow-hidden bg-white b-radius-16 d-flex col-12 z-index-1">
+
+      <div class="auth__outlet-wrap flex-grow-0 flex-shrink-0 d-inline-flex flex-column">
+        <header class="d-flex pl-rem-3_5">
+          <figure class="auth__logo mr-rem-0_75">
+            <img src="/assets/img/png/logo.png" class="width-auto" alt="Uptracker Logo">
+          </figure>
+          <div class="auth__title">
+            <p class="color-primary font-28 font-weight-bold mb-px-5">UP-tracker</p>
+            <p class="color-primary font-16 letter-spacing-primary font-weight-400">We make inventory management fun!</p>
+          </div>
+        </header>
+  
+        <div class="d-flex flex-grow-1">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+  
+      <div class="d-none d-lg-inline-flex flex-grow-1 align-items-center justify-content-center bg-primary px-3">
+        <figure>
+          <img class="welcome-img width-100 height-auto" [src]="(currenUrl$ | async) | authImage" alt="Welcome Image">
+        </figure>
+      </div>
+  
+    </div>
+  </div>
+
+  <footer class="width-100 py-px-10 pos-absolute bottom-0 left-0 font-12 text-align-center color-grey-400">Uptracker &#169; 2020</footer>
+
+</section>

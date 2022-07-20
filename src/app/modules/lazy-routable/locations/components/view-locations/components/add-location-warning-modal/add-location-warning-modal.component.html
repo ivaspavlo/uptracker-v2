@@ -1,0 +1,25 @@
+
+<section class="container-fluid p-0 pos-relative">
+
+  <app-close-modal-btn (closeModal)="dialogRef.close(false)"></app-close-modal-btn>
+
+  <div class="row no-gutters d-flex flex-column">
+    <h3 class="font-20 font-weight-500 line-height-24">Add Location</h3>
+    <p class="font-14 font-weight-400 color-grey-500 line-height-16 mt-rem-1 line-height-primary letter-spacing-primary">
+      <span>Your current Subscription Plan includes </span>
+      <span class="color-primary font-weight-500">{{ data.max_locations_qty }}</span>
+      <span> locations. By adding this location your monthly payment will be increased by </span>
+      <span class="color-primary font-weight-500">${{ (data.additional_location_price / 100) | number:'1.2-2' }}</span>
+      <span>. Are you agree?</span>
+    </p>
+  </div>
+
+  <div class="row no-gutters mt-rem-2 d-flex justify-content-end">
+    <app-btn-panel
+      [btnNames]="[ 'CANCEL', 'CONFIRM' ]"
+      (cancel)="dialogRef.close(false)"
+      (confirm)="dialogRef.close(true)"
+    ></app-btn-panel>
+  </div>
+
+</section>

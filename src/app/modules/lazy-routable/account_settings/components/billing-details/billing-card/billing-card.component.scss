@@ -1,0 +1,44 @@
+::ng-deep .mat-menu-item {
+  line-height: 35px;
+  height: 35px;
+  .mat-icon {
+    margin-right: 11px;
+  }
+}
+
+.card-wrapper {
+  padding-top: 24px;
+  padding-left: 32px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+
+  .card-image {
+    max-width: 118px;
+    margin-right: 24px;
+  }
+
+  .card-title {
+    margin-top: 4px;
+    margin-bottom: 34px;
+  }
+}
+
+.set-active-btn {
+  background: none;
+  padding: 0;
+}
+
+.dots-icon {
+  height: 2rem;
+  width: 2rem;
+}
+
+.card-menu {
+  position: absolute;
+  right: 0;
+}
+
+.activate-button {
+  position: absolute;
+  right: 0;
+}

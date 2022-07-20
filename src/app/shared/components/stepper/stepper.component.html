@@ -1,0 +1,21 @@
+
+<div class="stepper-container overflow-auto pos-relative width-100">
+
+  <div class="steps-wrap d-flex pos-absolute top-0 left-0 height-100">
+
+    <div
+      *ngFor="let step of steps; let last = last; let idx = index;"
+      (click)="onStepClick(step)"
+      class="step pos-relative d-flex align-items-center justify-content-start height-100 overflow-hidden b-radius-6 font-14 mr-px-20 font-weight-500"
+      [ngClass]="{ 'm-0': last, 'step--current': currentStep === idx, 'step--disabled': step.isDisabled }">
+        <span class="step__idx font-weight-500 font-18">{{ idx + 1 }}</span>
+        <span class="step__title">{{ step.title }}</span>
+        <i
+          class="step__check pos-absolute"
+          [ngClass]="{ 'step__check--green': idx !== currentStep && step.isComplete, 'step__check--white': idx === currentStep && step.isComplete }"
+        ></i>
+    </div>
+
+  </div>
+  
+</div>

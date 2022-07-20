@@ -1,0 +1,65 @@
+
+<section class="container-fluid p-0">
+
+  <div class="row no-gutters">
+
+    <header class="col-12">
+      <app-modal-header [titles]="[ 'Cancel Subscription', 'Please tell us the reason of cancelling subscription:' ]"></app-modal-header>
+    </header>
+
+    <div class="col-12">
+
+      <div class="width-100 d-flex justify-content-between mt-rem-1_5 plan-heading">
+        <button
+          *ngFor="let btn of btns; let idx = index;"
+          (click)="currentOption = btn.title; updateReason(currentOption)"
+          [ngClass]="{ 'main-btn--selected': currentOption === btn.title }"
+          class="main-btn d-flex align-items-center pl-rem-1_5 pr-rem-1 border-1 b-radius-6 color-grey-500 bg-white">
+            <figure class="main-btn__icon">
+              <img [src]="currentOption === btn.title ? btn.img_active : btn.img_inactive" alt="Select cancel option button">
+            </figure>
+            <span class="ml-rem-1 text-align-left line-height-16">{{ btn.title }}</span>
+        </button>
+      </div>
+
+      <form [formGroup]="form">
+        <form [formGroup]="cancelSubFormCtrls.options" class="d-flex flex-column options-form" *ngIf="currentOption === btnNames.option1">
+          <mat-checkbox [formControl]="reasonFormCtrls.not_enough_time" class="up-checkbox mb-px-18 font-weight-400">Not enough time</mat-checkbox>
+          <mat-checkbox [formControl]="reasonFormCtrls.hard_to_use" class="up-checkbox mb-px-18 font-weight-400">Hard to use</mat-checkbox>
+          <mat-checkbox [formControl]="reasonFormCtrls.dont_fit_needs" class="up-checkbox mb-px-18 font-weight-400">Doesn't fit our office needs</mat-checkbox>
+          <mat-checkbox [formControl]="reasonFormCtrls.contact_when_updated" class="up-checkbox mb-px-18 font-weight-400">Not ready to use it yet, contact with future updates</mat-checkbox>
+          <mat-checkbox [formControl]="reasonFormCtrls.other" class="up-checkbox font-weight-400">Other (type reason in comment input)</mat-checkbox>
+        </form>
+        <mat-form-field appearance="outline" class="width-100 form-field-wrapper adjusted-mat-input">
+          <mat-label>Comment</mat-label>
+          <input matInput type="text" [formControl]="cancelSubFormCtrls.comment" placeholder="Comment">
+        </mat-form-field>
+      </form>
+
+      <div class="width-100 mb-rem-2">
+        <div class="info px-rem-1_5 d-flex align-items-center border-radius-4">
+          <figure class="info__img mr-rem-1">
+            <img src="/assets/img/svg/info-large.svg" alt="Info Block">
+          </figure>
+          <p class="color-grey-500 line-height-16 font-12 font-weight-400">
+            <span>Your subscription will be canceled at the end of your billing cycle at </span><br>
+            <span class="font-weight-bold color-primary">{{ data.date | date: 'MM.dd.yyyy' }}</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="col-12">
+      <app-btn-panel
+        (confirm)="onConfirm(form.value)"
+        (cancel)="dialogRef.close(false)"
+        [btnNames]="[ 'CANCEL', 'CONFIRM' ]"
+        [confirmDisabled]="!form.valid"
+        [isCancelBold]="false"
+      ></app-btn-panel>
+    </footer>
+
+  </div>
+
+</section>

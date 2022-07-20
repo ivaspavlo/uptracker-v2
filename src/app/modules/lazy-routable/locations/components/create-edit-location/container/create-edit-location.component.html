@@ -1,0 +1,38 @@
+
+<section *ngIf="(editLocationData$ | async) as editData" class="container-fluid d-flex flex-column height-100 p-0">
+
+  <header class="row no-gutters bg-primary border-bottom-1 border-color-grey-100">
+    <app-view-header
+      [title]="editData.selected_location ? 'Edit Location' : 'Add Location'"
+      [subtitle]="editData.selected_location ? null : 'Enter the information below to add a location'"
+    ></app-view-header>
+  </header>
+
+  <main class="row no-gutters d-flex flex-grow-1 pos-relative overflow-auto">
+    <div class="d-flex flex-row pos-absolute px-rem-2_5 pt-rem-2_5">
+      <app-add-location-form-component
+        [showImg]="true"
+        [isFormLoading]="isLoading$"
+        [img]="currentStreetImage$"
+        [editLocation]="editData.selected_location"
+        [currencies]="currencies"
+        (formValid)="isFormValid = $event"
+        (imgSelected)="onImgSelected($event)"
+        (formSubmit)="onSubmit($event)">
+      </app-add-location-form-component>
+    </div>
+  </main>
+
+  <app-sticky-footer>
+    <div class="d-flex width-100 justify-content-end px-rem-2_5">
+      <button mat-flat-button class="mr-rem-1_5 font-weight-500" [routerLink]="['/locations']">CANCEL</button>
+      <button
+        type="submit" form="addLocationForm"
+        mat-raised-button color="primary"
+        [appSpinner]="isLoading$ | async"
+        [disabled]="!isFormValid"
+      >SAVE</button>
+    </div>
+  </app-sticky-footer>
+
+</section>

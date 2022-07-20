@@ -1,0 +1,8 @@
+
+@import '~@angular/material/theming';
+@import '../../../../assets/styles/colors';
+
+header {
+  padding: 30px 40px 29px !important;
+  border-bottom: 1px solid map-get($uptracker-brown, A300);
+}

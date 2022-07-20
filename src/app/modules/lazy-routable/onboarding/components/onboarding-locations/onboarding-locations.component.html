@@ -1,0 +1,40 @@
+
+<section class="max-width-600 row no-gutters d-flex">
+
+  <header class="col-12 mb-rem-2">
+    <p class="color-grey-500 line-height-16 font-weight-400">Please add your location or few locations. You can edit your locations on the “Location List” page.</p>
+  </header>
+
+  <div class="col-12 mb-rem-1_75">
+    <app-stepper-small
+      (stepSmall)="currentLocationTab = $event"
+      [currentStep]="currentLocationTab"
+      [steps]="steps$ | async"
+    ></app-stepper-small>
+  </div>
+
+  <div class="col-12 d-flex mt-px-4">
+    <ng-container *ngFor="let location of (steps$ | async); let idx = index;">
+      <app-add-location-form-component
+        *ngIf="currentLocationTab === idx"
+        [initedForm]="forms[currentLocationTab]"
+        [editLocation]="storeLocations[idx]"
+        [isFormLoading]="isLoading$"
+        [img]="img$"
+        (formSubmit)="this.onSubmitLocation($event)"
+        (formIsReady)="forms[idx] = $event"
+      ></app-add-location-form-component>
+    </ng-container>
+  </div>
+
+  <div class="col-12 d-flex mt-px-4 mb-rem-2_5">
+    <button
+      type="submit"
+      form="addLocationForm"
+      mat-flat-button color="primary"
+      [disabled]="!forms[currentLocationTab]?.valid"
+      [appSpinner]="isLoading$ | async"
+    >SAVE THIS LOCATION</button>
+  </div>
+
+</section>

@@ -1,0 +1,112 @@
+
+@import '~@angular/material/theming';
+@import 'mixins/_all';
+
+@mixin buttons-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .mat-button-wrapper {
+    display: block;
+    transform: translateY(1px);
+  }
+
+  .mat-button,
+  .mat-flat-button,
+  .mat-raised-button,
+  .mat-stroked-button {
+    font-weight: bold;
+  }
+
+  //buttons Primary custom disabled state
+  .mat-flat-button.mat-primary[disabled],
+  .mat-raised-button.mat-primary[disabled],
+  .mat-fab.mat-primary[disabled],
+  .mat-mini-fab.mat-primary[disabled] {
+    color: white;
+    background-color: mat-color($primary, 100);
+  }
+
+  //buttons Accent custom disabled state
+  .mat-flat-button.mat-accent[disabled],
+  .mat-raised-button.mat-accent[disabled],
+  .mat-fab.mat-accent[disabled],
+  .mat-mini-fab.mat-accent[disabled] {
+    color: white;
+    background-color: mat-color($accent, 100);
+  }
+
+  //buttons Warning custom disabled state
+  .mat-flat-button.mat-warn[disabled],
+  .mat-raised-button.mat-warn[disabled],
+  .mat-fab.mat-warn[disabled],
+  .mat-mini-fab.mat-warn[disabled] {
+    color: white;
+    background-color: mat-color($warn, 100);
+  }
+
+  button.mat-icon-button {
+    width: 36px;
+    border-radius: 2px;
+    .mat-icon { opacity: .5; }
+    &:hover .mat-icon { opacity: 1; }
+    @include m('stroked') {
+      line-height: 16px;
+      height: 32px; width: 32px;
+      border: 1px solid mat-color($uptracker-brown, 100);
+    }
+  }
+
+  button {
+    &.up-prime-1 {
+      color: mat-color($primary);
+      border: 1px solid mat-color($primary) !important;
+      &:hover { color: mat-color($primary, 500); }
+      &:disabled {
+        color: mat-color($uptracker-brown, 500) !important;
+        border: 1px solid mat-color($uptracker-brown, 400) !important;
+        background-color: white;
+      }
+    }
+    &.up-prime-2 {
+      background-color: $green;
+      color: #fff;
+    }
+    &.up-prime-3 {
+      color: mat-color($uptracker-brown, 800);
+      border: 1px solid mat-color($uptracker-brown, 800) !important;
+    }
+    &.up-mini-1 {
+      padding: 0;
+      font-weight: normal;
+      font-size: 14px;
+      color: mat-color($uptracker-brown, 500);
+    }
+    &.up-mini-2 {
+      padding: 0 12px;
+      .mat-button-wrapper {
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        height: 32px;
+        letter-spacing: 1px;
+        font-size: 12px;
+        .mat-icon {
+          width: 12px;
+          margin-right: 8px;
+        }
+      }
+    }
+    &.up-input-icon-btn {
+      border-radius: 4px;
+      background-color: mat-color($uptracker-blue, 400);
+      transform: translateX(3px);
+      @include m('error') { background-color: $warning; }
+    }
+    &.up-inline-icon-btn {
+      height: 36px;
+    }
+  }
+
+}

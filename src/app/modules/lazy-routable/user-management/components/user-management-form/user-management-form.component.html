@@ -1,0 +1,40 @@
+
+<form [formGroup]="form" class="row no-gutters">
+
+  <div class="col-6">
+    <mat-form-field appearance="outline" class="width-100 pr-rem-0_75 form-field-wrapper">
+      <mat-label>Name</mat-label>
+      <input matInput type="string" [formControlName]="ctrlNames.name">
+      <mat-error>{{ ctrls[ctrlNames.name].errors | inputError }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="col-6">
+    <mat-form-field appearance="outline" class="width-100 pl-rem-0_75 form-field-wrapper">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [formControlName]="ctrlNames.email_address">
+      <mat-error>{{ ctrls[ctrlNames.email_address].errors | inputError:emailErrorsMap }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="col-6">
+    <mat-form-field appearance="outline" class="width-100 pr-rem-0_75 form-field-wrapper">
+      <mat-label>Role</mat-label>
+      <mat-select [formControlName]="ctrlNames.role">
+        <mat-option *ngFor="let item of data.roles" [value]="item.role">{{ item.role }}</mat-option>
+      </mat-select>
+      <mat-error>{{ ctrls[ctrlNames.role].errors | inputError }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="col-6">
+    <mat-form-field appearance="outline" class="width-100 pl-rem-0_75 form-field-wrapper">
+      <mat-label>Locations</mat-label>
+      <mat-select [formControlName]="ctrlNames.locations" multiple>
+        <mat-option *ngFor="let location of data.locations" [value]="location.id">{{ location.name }}</mat-option>
+      </mat-select>
+      <mat-error>{{ ctrls[ctrlNames.locations].errors | inputError }}</mat-error>
+    </mat-form-field>
+  </div>
+
+</form>

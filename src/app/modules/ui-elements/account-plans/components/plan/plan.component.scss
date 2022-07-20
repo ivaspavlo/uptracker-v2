@@ -1,0 +1,45 @@
+
+@import 'mixins/_all';
+@import '_colors';
+
+.plan {
+  width: 326px; min-height: 443px;
+  padding: 24px 16px;
+  border: 1px solid mat-color($uptracker-blue, 50);
+  border-radius: 4px;
+  transition: .3s;
+  p, span { line-height: 16px; letter-spacing: .4px; }
+  &:hover { box-shadow: 0px 4px 8px rgba(216, 226, 255, 0.15); }
+  @include m('selected') { border: 1px solid $green; }
+  @include e('title') { margin-bottom: 18px; &.current-plan { margin-top: -12px; }}
+  @include e('location-qty') { height: 16px; }
+  @include e('btns') { margin-top: 20px; }
+  @include e('pointer') {
+    width: 11.2px;
+    margin-right: 15px;
+    transform: translateY(-2px);
+    background: center / contain no-repeat url('/assets/img/svg/location-black.svg');
+  }
+  @include e('plus') {
+    width: 11.2px;
+    margin-right: 15px;
+    font-style: normal;
+    background: center / contain no-repeat url('/assets/img/svg/small-plus.svg');
+  }
+  @include e('check') {
+    width: 12px;
+    margin: 0 14px 0 6px;
+    @include m('is-included') { height: 8px; background: center / contain no-repeat url('/assets/img/svg/check-green.svg'); }
+    @include m('not-included') { height: 10px; background: center / contain no-repeat url('/assets/img/svg/times-red.svg'); }
+  }
+  @include e('card-menu') {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 8px;
+    margin-top: 12px;
+    button { height: 2rem; width: 2rem; display: flex; align-items: center; justify-content: center; }
+  }
+}
+
+.ml-rem-0_75 { margin-left: 0.75rem !important; }
+.progress-bar-wrapper { margin-bottom: -0.5rem; }

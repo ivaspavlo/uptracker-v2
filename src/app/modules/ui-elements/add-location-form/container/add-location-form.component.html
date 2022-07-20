@@ -1,0 +1,127 @@
+
+  <div class="street-img-wrapper mr-rem-2" *ngIf="showImg && form">
+
+    <figure
+      [appSpinner]="isFormLoading | async"
+      class="img-square"
+      [ngClass]="{ 'img-square--empty': !form.value.img }">
+      <img *ngIf="form.get('img').value" class="street-img width-100" [src]="form.get('img').value" alt="Street View">
+      <img *ngIf="!form.get('img').value" src="/assets/img/svg/add-new-location.svg" class="avatar__plh" alt="Street View Placeholder">
+    </figure>
+
+    <div class="d-flex flex-column align-items-center">
+      <button (click)="onEditImage()" mat-flat-button color="primary" class="my-3 up-mini-2">
+        <mat-icon  svgIcon="user-square" class="user-square-icon"></mat-icon>
+        Edit photo
+      </button>
+    </div>
+
+  </div>
+
+  <div class="add-location-form-wrapper max-width-600" *ngIf="form">
+    <form
+      #f="ngForm"
+      id="addLocationForm"
+      [formGroup]="form"
+      class="d-flex flex-column h-100"
+      (ngSubmit)="onSubmit(form.value)">
+
+      <div class="row no-gutters h-100">
+        <div class="col-sm">
+          <ng-container *ngFor="let field of fieldMap.values()">
+
+              <mat-form-field
+                [ngClass]="field.class"
+                class="form-field-wrapper"
+                *ngIf="presenter.isCustomField(field)"
+                appearance="outline"
+                floatLabel="always">
+                <mat-label>{{ field.label }}</mat-label>
+                <app-tel-input
+                  [required]="field.requiredLabel"
+                  [tel]="form"
+                  [errors]="field.currentErrors"
+                  [formControlName]="field.formControlName"
+                  [countryCodes]="countryCodes"
+                ></app-tel-input>
+                <mat-icon matSuffix *ngIf="field.icon"[svgIcon]="field.icon"></mat-icon>
+
+                <mat-error *ngFor="let error of field.currentErrors">{{ error.message }}</mat-error>
+              </mat-form-field>
+
+              <mat-form-field
+                appearance="outline"
+                *ngIf="presenter.isInputControlVisible(field)"
+                [ngClass]="field.class"
+                class="form-field-wrapper w-100">
+                <mat-label>{{ field.label }}</mat-label>
+
+                <input
+                  *ngIf="presenter.isInputWithAutocomplete(field)"
+                  matInput
+                  [required]="field.requiredLabel"
+                  matGoogleMapsAutocomplete
+                  (onAutocompleteSelected)="presenter.onLocationSelected($event, form)"
+                  [type]="field.type"
+                  [disabled]="field.disabled"
+                  [formControlName]="field.formControlName"
+                  [placeholder]="field.placeholder" />
+
+                <input
+                  *ngIf="!presenter.isInputWithAutocomplete(field)"
+                  matInput
+                  [required]="field.requiredLabel"
+                  [type]="field.type"
+                  [disabled]="field.disabled"
+                  [formControlName]="field.formControlName"
+                  [placeholder]="field.placeholder" />
+
+                <mat-icon matSuffix *ngIf="field.icon"[svgIcon]="field.icon"></mat-icon>
+
+                <mat-error *ngFor="let error of field.currentErrors">{{ error.message }}</mat-error>
+
+              </mat-form-field>
+
+              <mat-form-field
+                [ngClass]="field.class"
+                appearance="outline"
+                *ngIf="presenter.isInputTypeAutocomplete(field)"
+                class="form-field-wrapper w-100">
+                <mat-label>{{ field.label }}</mat-label>
+                <input
+                  matInput
+                  [required]="field.requiredLabel"
+                  [matAutocomplete]="auto"
+                  [disabled]="field.disabled"
+                  [formControlName]="field.formControlName"
+                  [placeholder]="field.placeholder" />
+                <mat-error *ngFor="let error of field.currentErrors">{{ error.message }}</mat-error>
+              </mat-form-field>
+
+              <mat-form-field
+                [ngClass]="field.class"
+                appearance="outline"
+                class="form-field-wrapper w-100"
+                *ngIf="presenter.isInputTypeSelector(field)">
+                <mat-label>{{ field.label }}</mat-label>
+                <mat-select
+                  [formControlName]="field.formControlName"
+                  [required]="field.requiredLabel">
+                  <mat-option *ngFor="let opt of field.options" [value]="opt.value">
+                    {{ opt.displayName }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngFor="let error of field.currentErrors">{{ error.message }}</mat-error>
+              </mat-form-field>
+
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of presenter.filteredOptions(field.options, form)" [value]="option.label">
+                  {{ option.label }}
+                </mat-option>
+              </mat-autocomplete>
+          </ng-container>
+        </div>
+      </div>
+
+    </form>
+  </div>

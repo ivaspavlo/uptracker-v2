@@ -1,0 +1,16 @@
+<div class="row h-100 px-4 pt-px-40 no-gutters">
+
+  <div class="col-md" *ngIf="plan$ | async">
+    <app-plan
+      [promo]="promo$ | async"
+      [plan]="plan$ | async"
+      [isCurrentPlan]="true"
+      (planCancel)="onCancelPlan($event)"
+      (planChange)="onChangePlan($event)"
+    ></app-plan>
+  </div>
+
+</div>
+
+
+

@@ -1,0 +1,27 @@
+
+<section class="container-fluid p-0">
+
+  <header class="row no-gutters flex-column mb-rem-1_75">
+    <app-modal-header [titles]="[data.title]"></app-modal-header>
+  </header>
+
+  <div class="row no-gutters">
+    <app-user-management-form
+      [form]="form"
+      [ctrls]="ctrls"
+      [ctrlNames]="ctrlNames"
+      [data]="data"
+    ></app-user-management-form>
+  </div>
+
+  <div class="row d-flex justify-content-end no-gutters mt-1">
+    <app-btn-panel
+      [confirmDisabled]="!form.valid"
+      [btnNames]="['CANCEL', 'SAVE']"
+      [isCancelBold]="false"
+      (cancel)="dialogRef.close()"
+      (confirm)="onConfirm()"
+    ></app-btn-panel>
+  </div>
+
+</section>

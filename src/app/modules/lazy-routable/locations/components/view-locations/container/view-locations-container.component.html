@@ -1,0 +1,33 @@
+
+<section class="container-fluid p-0 d-flex flex-column height-100">
+
+  <header class="row no-gutters bg-primary border-bottom-1 border-color-grey-100">
+    <app-view-header title="Locations"></app-view-header>
+  </header>
+
+  <div class="row no-gutters d-flex flex-column flex-grow-1 pos-relative overflow-auto">
+    <div class="d-flex flex-wrap width-100 pos-absolute px-rem-1 pt-rem-2_5">
+      <app-location-card
+        *ngFor="let location of (locations$ | async)"
+        [isOnlyOneLocation]="isOnlyOneLocation$ | async"
+        [location]="location" (delete)="onDelete($event)"
+        (edit)="onEdit($event)"
+        class="ml-rem-1_5 mb-rem-1_5 d-inline-flex"
+      ></app-location-card>
+    </div>
+  </div>
+
+  <footer class="row no-gutters">
+    <app-sticky-footer>
+      <div class="width-100 pl-rem-3_5 pr-rem-2_5 d-flex align-items-center">
+        <p *ngIf="(maxLocationQty$ | async) as maxLocationsQty" class="font-12 font-weight-400 letter-spacing-primary color-grey-500">Locations {{ (locations$ | async)?.length }} of {{ maxLocationsQty }}</p>
+        <div class="d-flex flex-grow-1 justify-content-end">
+          <button mat-flat-button color="primary" (click)="onAdd()">
+            ADD NEW LOCATION<mat-icon class="plus-icon-right" svgIcon="plus"></mat-icon>
+          </button>
+        </div>
+      </div>
+    </app-sticky-footer>
+  </footer>
+
+</section>

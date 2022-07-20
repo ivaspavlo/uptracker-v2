@@ -1,0 +1,89 @@
+<div class="container-fluid d-flex flex-column p-0 height-100">
+
+  <header class="row no-gutters bg-primary">
+    <app-view-header
+      title="Edit Subscription Plan"
+      [largePadding]="false"
+    ></app-view-header>
+  </header>
+
+  <main class="main-wrapper h-100 border-top-1 border-color-grey-300">
+
+
+    <div class="d-flex flex-row no-gutters mb-rem-2">
+      <div class="col d-flex">
+        <form [formGroup]="form" class="col-12 d-flex align-items-center px-0">
+          <div class="promo overflow-hidden">
+            <mat-form-field appearance="outline" class="promo__form-field width-100 form-field-wrapper form-field-wrapper--suffix-btn">
+              <mat-label>Promo code</mat-label>
+              <input matInput [formControl]="promoCtrl">
+              <button
+                mat-icon-button matSuffix
+                (click)="checkPromoCode()"
+                class="up-input-icon-btn"
+                [ngClass]="{ 'up-input-icon-btn--error': !promoCtrl.valid && promoCtrl.dirty }">
+                  <mat-icon svgIcon="arrow-right-small"></mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <p *ngIf="!promoCtrl.valid && promoCtrl.dirty" class="promo__warn font-14 color-warning ml-rem-1_5 font-weight-400">The code is invalid</p>
+        </form>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row no-gutters">
+      <div class="col d-flex">
+        <p class="font-14 color-grey-500 mb-rem-2">
+          Please select your plan. You can change plan or cancel subsription at any time in “Account Settings” page.
+        </p>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row no-gutters">
+      <div class="col d-flex">
+        <ng-container *ngFor="let plan of plans$ | async">
+          <app-plan
+            *ngIf="(currentPlan$ | async).id === plan.id"
+            [showLocationsControls]="false"
+            [plan]="plan"
+            [promo]="promo$ | async"
+            (selected)="selectPlan(plan)"
+            [isAnyPlanSelected]="true"
+          ></app-plan>
+          <app-plan
+            *ngIf="(currentPlan$ | async).id !== plan.id"
+            [showLocationsControls]="false"
+            [plan]="plan"
+            [promo]="promo$ | async"
+            (selected)="selectPlan(plan)"
+            [isAnyPlanSelected]="true"
+          ></app-plan>
+        </ng-container>
+      </div>
+    </div>
+  </main>
+
+  <app-sticky-footer>
+    <div class="row no-gutters width-100 justify-content-end px-rem-2_5">
+      <app-btn-panel
+        *ngIf="!(isPromoApplied$ | async)"
+        (confirm)="setPlanAsActive()"
+        (cancel)="onClose()"
+        [isCancelBold]="false"
+        [isSpinnerVisible]="(stateLoading$ | async) === 'LOADING'"
+        [confirmDisabled]="(isSelectedCurrentPlan$) | async"
+        [btnNames]="['CANCEL', 'SAVE']">
+      </app-btn-panel>
+
+      <app-btn-panel
+        *ngIf="isPromoApplied$ | async"
+        (confirm)="setPlanWithPromoCode()"
+        (cancel)="onClose()"
+        [isCancelBold]="false"
+        [isSpinnerVisible]="(stateLoading$ | async) === 'LOADING'"
+        [btnNames]="['CANCEL', 'SAVE']">
+    </app-btn-panel>
+    </div>
+  </app-sticky-footer>
+
+</div>

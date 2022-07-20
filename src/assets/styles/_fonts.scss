@@ -1,0 +1,6 @@
+
+@import "~@angular/material/theming";
+
+app-root {
+  color: map-get($uptracker-brown, 800);
+}

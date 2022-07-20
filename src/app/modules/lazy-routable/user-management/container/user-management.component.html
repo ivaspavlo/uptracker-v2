@@ -1,0 +1,39 @@
+
+<section class="app-user-management container-fluid d-flex flex-column p-0 height-100" *ngIf="tabsData">
+
+  <header class="row no-gutters bg-primary">
+    <app-view-header
+      title="User Management"
+      [largePadding]="false"
+    ></app-view-header>
+  </header>
+
+  <main class="row no-gutters flex-grow-1">
+    <mat-tab-group class="up-tabs-1 header-tabs col-12" (selectedTabChange)="currentTabName$.next($event.tab.textLabel)">
+      <mat-tab [label]="item.key" *ngFor="let item of tabsData | keyvalue:asIsOrdering">
+        <app-user-management-tab
+          [tabName]="item.key"
+          [users]="(item.value.data$ | async) | formatUsersTableData:item.key:locations"
+          (editUser)="onEditUser($event)"
+          (archiveUser)="onArchiveUser($event)"
+          (reactivateUser)="onReactivateUser($event)"
+          (invite)="onInvite()"
+          (reInvite)="onReinvite($event)"
+          (editInvite)="onEditInvite($event)"
+          (deleteInvite)="onDeleteInvite($event)"
+        ></app-user-management-tab>
+      </mat-tab>
+    </mat-tab-group>
+  </main>
+
+  <app-sticky-footer *ngIf="footerVisibilityToggler$ | async">
+    <div class="d-flex width-100 justify-content-end px-rem-2_5">
+      <button
+        mat-flat-button color="primary"
+        (click)="onInvite()">
+          INVITE A USER<mat-icon class="plus-icon-right" svgIcon="plus"></mat-icon>
+      </button>
+    </div>
+  </app-sticky-footer>
+
+</section>

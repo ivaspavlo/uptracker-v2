@@ -1,0 +1,27 @@
+
+@import 'mixins/_all';
+
+.credit-card {
+  width: 118px; height: 78px;
+  box-shadow: 0px 12px 12px -8px rgba(64, 64, 111, 0.55);
+  @include e('name') {
+    line-height: 9px;
+  }
+  @include e('chip') {
+    width: 16px;
+    margin: 12px 0 6px;
+  }
+  @include e('master') {
+    width: 23px; height: 19px;
+    right: 12px; bottom: 10px;
+  }
+  @include e('default') {
+    right: 12px; bottom: 11px;
+  }
+  @include e('visa') {
+    right: 12px; bottom: 15px;
+  }
+  @include e('discover') {
+    right: 12px; bottom: 8px;
+  }
+}

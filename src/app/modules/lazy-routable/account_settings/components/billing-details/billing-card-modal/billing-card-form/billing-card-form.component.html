@@ -1,0 +1,94 @@
+<div class="row no-gutters mb-4">
+  <div class="col">
+    <h3>{{ title }}</h3>
+  </div>
+</div>
+
+<form
+  [formGroup]="form"
+  class="d-flex flex-column h-100">
+
+  <div class="row no-gutters h-100">
+    <div class="col-sm">
+      <ng-container *ngFor="let field of fieldMap.values()">
+
+          <mat-form-field
+            appearance="outline"
+            *ngIf="presenter.isInputControlVisible(field)"
+            [ngClass]="field.class"
+            class="form-field-wrapper w-100">
+            <mat-label>{{ field.label }}</mat-label>
+
+            <input
+              *ngIf="presenter.isInputWithAutocomplete(field)"
+              matInput
+              [required]="field.requiredLabel"
+              (onAutocompleteSelected)="presenter.onLocationSelected($event)"
+              [type]="field.type"
+              [disabled]="field.disabled"
+              [formControlName]="field.formControlName"
+              [placeholder]="field.placeholder" />
+
+            <input
+              *ngIf="!presenter.isInputWithAutocomplete(field) && !field.mask"
+              matInput
+              [required]="field.requiredLabel"
+              [type]="field.type"
+              [disabled]="field.disabled"
+              [formControlName]="field.formControlName"
+              [placeholder]="field.placeholder" />
+
+            <input
+              *ngIf="!presenter.isInputWithAutocomplete(field) && field.mask"
+              matInput
+              [appInputMask]="field.mask"
+              [required]="field.requiredLabel"
+              [type]="field.type"
+              [disabled]="field.disabled"
+              [formControlName]="field.formControlName"
+              [placeholder]="field.placeholder" />
+
+
+            <mat-icon matSuffix *ngIf="field.icon" [svgIcon]="field.icon"></mat-icon>
+
+            <mat-error *ngFor="let error of field.currentErrors">{{ error.message }}</mat-error>
+
+          </mat-form-field>
+
+          <mat-form-field
+            [ngClass]="field.class"
+            appearance="outline"
+            class="form-field-wrapper w-100"
+            *ngIf="presenter.isInputTypeSelector(field)">
+            <mat-label>{{ field.label }}</mat-label>
+            <mat-select
+              [formControlName]="field.formControlName"
+              [required]="field.requiredLabel">
+              <mat-option *ngFor="let opt of field.options" [value]="opt.value">
+                {{ opt.displayName }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngFor="let error of field.currentErrors">{{ error.message }}</mat-error>
+          </mat-form-field>
+
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="row d-flex no-gutters justify-content-between">
+
+    <div class="pt-2 align-self-start">
+      <p class="color-warning font-weight-400">{{ stripeErrors?.message }}</p>
+    </div>
+
+    <app-btn-panel
+      [isCancelBold]="false"
+      [confirmDisabled]="!form.valid"
+      [btnNames]="['CANCEL', 'SAVE']"
+      [isSpinnerVisible]="(loading$ | async) === 'LOADING'"
+      (cancel)="presenter.onModalClose()"
+      (confirm)="presenter.onFormSubmit(this.form.value)"
+    ></app-btn-panel>
+  </div>
+
+</form>

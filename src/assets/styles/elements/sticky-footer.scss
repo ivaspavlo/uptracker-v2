@@ -1,0 +1,14 @@
+
+@import '~@angular/material/theming';
+@import '_colors';
+
+.sticky-form-footer {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid map-get($uptracker-brown, 100);
+  position: sticky;
+  z-index: $z-index-footer;
+  bottom: 0;
+  background-position: left bottom;
+  height: 64px;
+}

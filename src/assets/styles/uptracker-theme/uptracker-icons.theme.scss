@@ -1,0 +1,51 @@
+
+@import '~@angular/material/theming';
+
+@mixin icons-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .sm-icon {
+    height: 16px !important;
+    width: 16px !important;
+  }
+
+  .sm-2-icon {
+    height: 18px !important;
+    width: 18px !important;
+  }
+
+  .sm-3-icon {
+    height: 20px !important;
+    width: 20px !important;
+  }
+
+  .md-icon {
+    height: 24px !important;
+    width: 24px !important;
+  }
+
+  .lg-icon {
+    height: 32px !important;
+    width: 32px !important;
+  }
+
+  .mat-icon {
+    &.trash-icon { height: 25px; width: 20px; transform: translate(1px, -1px); }
+    &.plus-icon-right { width: 25px; margin-left: 8px; transform: translateY(-1px); }
+    &.user-icon { display: inline-flex; transform: translate(0, -1px); }
+    &.dots-icon { width: 20px; transform: translate(0px, -1px); }
+    &.re-do-blue-icon { width: 18px; transform: translate(1px, -1px); }
+    &.pencil-blue-icon { width: 17px; transform: translate(1px, -2px); }
+    &.trash-blue-icon { width: 13px; transform: translate(1px, -1px); }
+    &.off-blue-icon { width: 20px; transform: translate(1px, -2px); }
+    &.change-password-icon { transform: translate(1px, -4px); }
+    &.lock-icon { height: 20px; width: 18px; margin-right: 0; transform: translate(1px, -3px); }
+    &.eye-icon { color: #000; }
+    &.check-circle-white-icon { width: 16px; margin-right: 10px; }
+    &.info-small-icon { transform: translate(-5px, -2px); }
+    &.user-square-icon { transform: translateY(-1px); }
+  }
+
+}

@@ -1,0 +1,25 @@
+
+@import 'mixins/_all';
+
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+
+@include sm {
+  .overflow-sm-hidden { overflow: hidden; }
+  .overflow-sm-auto { overflow: auto; }
+}
+
+@include md {
+  .overflow-md-hidden { overflow: hidden; }
+  .overflow-md-auto { overflow: auto; }
+}
+
+@include lg {
+  .overflow-lg-hidden { overflow: hidden; }
+  .overflow-lg-auto { overflow: auto; }
+}
+
+@include xl {
+  .overflow-xl-hidden { overflow: hidden; }
+  .overflow-xl-auto { overflow: auto; }
+}

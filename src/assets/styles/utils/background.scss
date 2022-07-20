@@ -1,0 +1,26 @@
+
+@import 'mixins/_all';
+@import '_colors';
+
+.bg-center-norepeat { background: center no-repeat; }
+
+.bg-primary { background-color: mat-color($uptracker-brown, 200); }
+.bg-secondary { background-color: #fff; }
+
+.bg-white { background-color: #fff; }
+.bg-black { background-color: #000; }
+.bg-tealish { background-color: $tealish; }
+
+.bg-blue-400 { background-color: mat-color($uptracker-blue, 400); }
+.bg-blue-800 { background-color: mat-color($uptracker-blue, 800); }
+
+.bg-grey-800 { background-color: mat-color($uptracker-brown, 800); }
+.bg-grey-A500 { background-color: mat-color($uptracker-brown, A500); }
+
+@include sm { }
+
+@include md { }
+
+@include lg { }
+
+@include xl { }

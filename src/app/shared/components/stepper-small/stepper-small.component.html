@@ -1,0 +1,22 @@
+
+<div class="stepper-container overflow-auto pos-relative">
+
+  <div class="steps-wrap d-flex align-items-start height-100 pos-absolute">
+
+    <div
+      (click)="onStepClick(idx)"
+      *ngFor="let step of steps; let idx = index; let isLast = last;"
+      class="step d-flex align-items-center flex-shrink-0 px-rem-1_5 py-rem-1 b-radius-4"
+      [ngClass]="{
+        'step--regular': idx !== currentStep && !step.isDisabled,
+        'step--current': idx === currentStep,
+        'step--disabled': step.isDisabled,
+        'mr-rem-1_5': !isLast
+      }">
+        <i *ngIf="step.isComplete" class="step__check-icon"></i>
+        <p class="font-weight-500 font-14">{{ step.title }}</p>
+    </div>
+
+  </div>
+
+</div>

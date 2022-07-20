@@ -1,0 +1,55 @@
+<div class="container-fluid d-flex flex-column p-0 height-100">
+
+  <header class="row d-flex no-gutters pr-4 pb-2 pt-3 bg-primary">
+    <div class="col">
+      <h1 class="font-weight-600">Account Settings </h1>
+    </div>
+  </header>
+
+  <main class="row d-flex no-gutters main-wrapper">
+    <div class="col">
+      <mat-tab-group
+        #tabs
+        class="header-tabs"
+        (selectedTabChange)="tabChanged($event)"
+        animationDuration="300ms">
+        <mat-tab label="Company Info">
+          <app-company-info
+            [isFormLoading]="isFormLoading"
+            [fields]="fieldMap"
+            [form]="form"
+            (locationSelected)="onAccountLocationSelected($event)"
+            (formSubmit)="onAccountSettingsSubmit($event)">
+          </app-company-info>
+        </mat-tab>
+        <mat-tab label="Subscription Plan">
+          <app-subscription-plan></app-subscription-plan>
+        </mat-tab>
+        <mat-tab label="Billing Details">
+          <app-billing-details
+            [cards$]="cards$"
+            [email$]="billingEmail$">
+          </app-billing-details>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </main>
+
+  <app-sticky-footer *ngIf="currentTabInx === 0">
+    <div class="row no-gutters width-100 justify-content-end px-rem-2_5">
+      <button
+        class="text-transform-uppercase"
+        [disabled]="form.disabled || !form.valid"
+        [appSpinner]="isFormLoading"
+        type="submit"
+        form="companyInfoForm"
+        mat-raised-button
+        color="primary">
+        <span>
+          Save changes
+        </span>
+      </button>
+    </div>
+  </app-sticky-footer>
+
+</div>

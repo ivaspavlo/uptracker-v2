@@ -1,0 +1,27 @@
+:host { width: 100%; display: flex; }
+
+.img-cropper {
+  height: 144px;
+  width: 144px;
+}
+
+.avatar__plh {
+  width: 31px;
+}
+
+header {
+  padding: 35px 40px 15px !important;
+}
+
+.main-wrapper {
+  padding: 46px 40px 0;
+  flex: 1;
+}
+
+::ng-deep .mat-tab-body-wrapper {
+  padding: 0px 16px;
+}
+
+.top-form-col {
+  margin-top: -2px;
+}

@@ -1,0 +1,37 @@
+@import "~@angular/material/theming";
+@import "_colors";
+
+.header-wrapper {
+  background-color: white;
+
+  img {
+    height: 24px;
+  }
+
+  .prev-page-button-wrapper {
+    height: 40px;
+    width: 40px;
+    min-width: 40px;
+    .mat-icon {
+      height: 24px;
+      width: 24px;
+      margin: 0;
+    }
+    .prev-page-button {
+      min-width: 40px;
+      min-height: 40px;
+      padding: 0;
+    }
+  }
+
+  .sm-form-field-wrapper {
+    ::ng-deep .mat-form-field-wrapper {
+      padding: 0px !important;
+    }
+  }
+
+  .header-search-field {
+    width: 480px;
+  }
+
+}

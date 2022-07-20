@@ -1,0 +1,97 @@
+
+<section class="container-fluid p-0 d-flex flex-column height-100" *ngIf="stepsKeys">
+
+  <header class="row no-gutters bg-primary border-bottom-1 border-color-grey-100">
+    <app-view-header title="Welcome to Up-tracker!" subtitle="Let’s get started. Please finish the following steps to start using UP-tracker system"></app-view-header>
+    <app-stepper [steps]="steps$ | async" [currentStep]="currentStep$ | async"></app-stepper>
+  </header>
+
+  <div #stepsContainer class="steps-container row no-gutters d-flex flex-grow-1 pos-relative overflow-auto">
+    <div [ngSwitch]="currentStep$ | async" class="d-flex flex-column justify-content-between flex-grow-1 height-100 width-100 px-rem-2_5 pt-rem-2_5 pos-absolute">
+
+      <ng-container *ngSwitchCase="stepsKeys.email">
+        <app-onboarding-email
+          (resend)="onResend($event)"
+          (stepComplete)="onStepComplete({ idx: stepsKeys.email, isComplete: $event })"
+          [emailAddress]="userEmail$ | async"
+          [emailVerified]="isEmailVerified$ | async"
+          [isLoading]="isLoading$ | async"
+        ></app-onboarding-email>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="stepsKeys.billing">
+        <app-onboarding-billing
+          (cardSave)="onCardSave($event)"
+          (stepComplete)="onStepComplete({ idx: stepsKeys.billing, isComplete: $event })"
+          [paymentData]="paymentData$ | async"
+          [isLoading]="isLoading$ | async"
+        ></app-onboarding-billing>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="stepsKeys.plans">
+        <app-onboarding-plans
+          (applyPromo)="onApplyPromo($event)"
+          (planChange)="onPlanChange($event)"
+          (stepComplete)="onStepComplete({ idx: stepsKeys.plans, isComplete: $event })"
+          [plans]="accountPlans$ | async"
+          [promo]="promo$ | async"
+        ></app-onboarding-plans>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="stepsKeys.locations">
+        <app-onboarding-locations
+          (setLocation)="onLocationSet($event)"
+          (updateLocation)="onLocationUpdate($event)"
+          (preserveLocationForms)="preservedLocationForms$.next($event)"
+          (stepComplete)="onStepComplete({ idx: stepsKeys.locations, isComplete: $event })"
+          [preservedLocationForms]="preservedLocationForms$ | async"
+          [storeLocations]="storeLocations$ | async"
+          [onboardedLocations]="onboardedLocations$ | async"
+          [isLoading]="isLoading$ | async"
+          [locationsQty]="(currentPlan$ | async)?.additional_location_qty + 1"
+        ></app-onboarding-locations>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="stepsKeys.team">
+        <app-onboarding-team
+          (inviteTeam)="onInviteTeam($event)"
+          (stepComplete)="onStepComplete({ idx: stepsKeys.team, isComplete: $event })"
+          [invitedTeam]="invitedTeam$ | async"
+          [isLoading]="isLoading$ | async"
+        ></app-onboarding-team>
+      </ng-container>
+
+      <div class="width-100 max-width-600">
+        <app-onboarding-info-banner></app-onboarding-info-banner>
+      </div>
+
+    </div>
+  </div>
+
+  <app-sticky-footer>
+    <div class="row no-gutters d-flex justify-content-between align-items-center width-100 pl-rem-3_5 pr-rem-2_5">
+      <div class="col-7 d-flex align-items-center">
+        <div class="bar flex-grow-1">
+          <app-progress-bar [currentValue]="progressBarValue$ | async" color="secondary"></app-progress-bar>
+        </div>
+        <p class="font-12 px-px-30 color-grey-500 font-weight-400">Step {{ currentStep + 1 }} of {{ (steps$ | async)?.length }}</p>
+      </div>
+      <div>
+        <button
+          [disabled]="isPrevStepAvailable$ | async"
+          mat-flat-button
+          (click)="onPrev()"
+          class="mr-4 font-weight-500"
+        >PREVIOUS</button>
+        <button
+          type="submit"
+          [disabled]="isNextStepDisabled$ | async"
+          mat-flat-button color="primary"
+          (click)="onNext()"
+          [appSpinner]="(isLoading$ | async) && currentStep !== stepsKeys.team"
+        >{{ currentStep === stepsKeys.team ? 'FINISH' : 'NEXT' }}</button>
+      </div>
+    </div>
+  </app-sticky-footer>
+
+</section>

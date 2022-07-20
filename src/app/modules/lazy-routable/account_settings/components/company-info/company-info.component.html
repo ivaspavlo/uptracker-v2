@@ -1,0 +1,81 @@
+<form
+  id="companyInfoForm"
+  [formGroup]="form"
+  class="d-flex flex-column h-100 pb-4 overflow-hidden"
+  (ngSubmit)="onSubmit(form.value)">
+
+  <div class="row no-gutters h-100 px-4 company-info-form-wrapper">
+    <div class="col-sm min-width-600 max-width-600">
+      <ng-container *ngFor="let field of fields.values()">
+
+        <mat-form-field
+          appearance="outline"
+          *ngIf="isInputControlVisible(field)"
+          [ngClass]="field.class"
+          class="form-field-wrapper w-100">
+          <mat-label>{{ field.label }}</mat-label>
+
+          <input
+            [required]="field.requiredLabel"
+            *ngIf="isInputWithAutocomplete(field)"
+            matInput
+            matGoogleMapsAutocomplete
+            (onAutocompleteSelected)="onLocationSelected($event)"
+            [type]="field.type"
+            [disabled]="field.disabled"
+            [formControlName]="field.formControlName"
+            [placeholder]="field.placeholder" />
+
+          <input
+            [required]="field.requiredLabel"
+            *ngIf="!isInputWithAutocomplete(field)"
+            matInput
+            [type]="field.type"
+            [disabled]="field.disabled"
+            [formControlName]="field.formControlName"
+            [placeholder]="field.placeholder" />
+          <mat-icon matSuffix *ngIf="field.icon"[svgIcon]="field.icon"></mat-icon>
+
+          <mat-error *ngFor="let error of field.currentErrors">{{ error.message }}</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field
+          [ngClass]="field.class"
+          appearance="outline"
+          *ngIf="isInputTypeAutocomplete(field)"
+          class="form-field-wrapper w-100">
+          <mat-label>{{ field.label }}</mat-label>
+          <input
+            [required]="field.requiredLabel"
+            matInput
+            [matAutocomplete]="auto"
+            [disabled]="field.disabled"
+            [formControlName]="field.formControlName"
+            [placeholder]="field.placeholder" />
+          <mat-error *ngFor="let error of field.currentErrors">{{ error.message }}</mat-error>
+        </mat-form-field>
+
+        <mat-slide-toggle
+          *ngIf="isCheckboxControlVisible(field)"
+          [formControlName]="field.formControlName"
+          class="example-margin">
+         {{ field.label }}
+        </mat-slide-toggle>
+
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions(field.options)" [value]="option.label">
+            {{ option.label }}
+          </mat-option>
+        </mat-autocomplete>
+      </ng-container>
+    </div>
+
+    <div class="col-sm">
+
+    </div>
+
+  </div>
+
+</form>
+

@@ -1,0 +1,19 @@
+
+<div class="d-flex justify-content-end">
+  <button
+    *ngIf="!!cancelName"
+    [disabled]="cancelDisabled"
+    mat-flat-button
+    (click)="cancel.emit()"
+    class="mr-4"
+    [ngClass]="{ 'font-weight-500': !isCancelBold }"
+  >{{ cancelName }}</button>
+  <button
+    *ngIf="!!confirmName"
+    [appSpinner]="isSpinnerVisible"
+    type="submit"
+    [disabled]="confirmDisabled"
+    mat-flat-button color="primary"
+    (click)="confirm.emit()"
+  >{{ confirmName }}</button>
+</div>

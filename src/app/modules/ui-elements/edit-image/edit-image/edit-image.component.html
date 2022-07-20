@@ -1,0 +1,36 @@
+
+<section class="app-edit-avatar pos-relative container-fluid p-0">
+
+  <app-close-modal-btn (closeModal)="dialogRef.close()"></app-close-modal-btn>
+
+  <header class="flex-column">
+    <h3 class="font-20 font-weight-500 line-height-24">Edit Photo</h3>
+    <p class="font-14 font-weight-400 color-grey-500 line-height-16 mt-rem-1">Upload and crop your photo if needed</p>
+  </header>
+
+  <div class="row no-gutters d-flex justify-content-center">
+    <div class="img-cropper my-px-40">
+      <div *ngIf="!showCropper" class="img-square img-square--lg img-square--empty">
+        <img src="/assets/img/svg/profile-icon.svg" alt="Avatar Placeholder">
+      </div>
+      <image-cropper
+        *ngIf="showCropper"
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="1 / 1"
+        format="png"
+        (imageCropped)="onImageCropped($event)"
+      ></image-cropper>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <div>
+      <app-file-input title="UPLOAD PICTURE" [clearFile$]="clearFile$.asObservable()" (inputFile)="onFileChange($event)"></app-file-input>
+      <button (click)="onClearFile()" mat-icon-button class="mat-icon-button--stroked up-inline-icon-btn ml-4"><mat-icon svgIcon="trash" class="trash-icon"></mat-icon></button>
+    </div>
+    <button (click)="onSave()" mat-flat-button color="primary">SAVE</button>
+  </div>
+
+</section>
+

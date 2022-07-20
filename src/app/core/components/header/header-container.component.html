@@ -1,0 +1,10 @@
+
+<app-header-wrapper
+  (logout)="onLogout()"
+  [currentPage$]="currentPage$"
+  (locationChange)="onLocationChange($event)"
+  (previousRoute)="onPreviousButtonClick()"
+  [locations]="locations"
+  [currentLocation]="currentLocation"
+  [avatar]="avatar">
+</app-header-wrapper>

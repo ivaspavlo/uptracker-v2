@@ -1,0 +1,51 @@
+
+<section class="container-fluid px-rem-4">
+
+  <app-auth-header title="Reset your password" subTitle="Please enter your new password"></app-auth-header>
+
+  <form *ngIf="form" [formGroup]="form" (submit)="onSubmit()" class="row no-gutters">
+
+    <mat-form-field appearance="outline" class="col-12 form-field-wrapper">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        [type]="pwdHidden ? 'password' : 'text'"
+        formControlName="password"
+        placeholder="New password">
+
+        <button type="button" tabindex="-1" mat-icon-button matSuffix (click)="$event.preventDefault(); pwdHidden = !pwdHidden">
+          <mat-icon class="eye-icon">{{ pwdHidden ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </button>
+
+      <mat-error>{{ form.get('password').errors | inputError:passwordInputErrorsMap }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="col-12 form-field-wrapper">
+      <mat-label>Confirm password</mat-label>
+      <input
+        matInput
+        [type]="confirmPwdHidden ? 'password' : 'text'"
+        formControlName="confirm_password"
+        [errorStateMatcher]="hasMustMatchError"
+        placeholder="Confirm password">
+
+        <button type="button" tabindex="-1" mat-icon-button matSuffix (click)="$event.preventDefault(); confirmPwdHidden = !confirmPwdHidden">
+          <mat-icon class="eye-icon">{{ confirmPwdHidden ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </button>
+
+      <mat-error>Passwords do not match</mat-error>
+    </mat-form-field>
+
+    <div class="col-12 mt-3">
+      <div class="d-flex justify-content-start width-100">
+        <button type="submit" color="primary" mat-flat-button [appSpinner]="isLoading$ | async" [disabled]="!form.valid" class="confirm-btn width-100">CONFIRM</button>
+      </div>
+    </div>
+
+    <div class="col-12 pos-relative mt-rem-3_5">
+      <button mat-flat-button [routerLink]="['/auth/login']" class="up-mini-1 pos-absolute"><mat-icon svgIcon="arrow-left-small" class="mr-2"></mat-icon>Back to login</button>
+    </div>
+
+  </form>
+
+</section>

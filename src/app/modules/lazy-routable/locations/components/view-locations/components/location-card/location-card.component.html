@@ -1,0 +1,23 @@
+
+<div class="location-card d-flex flex-column b-radius-4 border-1">
+
+  <figure class="location-card__view width-100 border-bottom-1 d-flex align-items-center justify-content-center overflow-hidden">
+    <img *ngIf="location.image" [src]="location.image" alt="Location Street View" class="width-100">
+    <img *ngIf="!location.image" src="/assets/img/svg/add-new-location.svg" alt="Location Street View Placeholder">
+  </figure>
+
+  <div class="location-card__info width-100 py-rem-0_75 px-rem-1 d-flex flex-column">
+    <p class="font-14 font-weight-bold line-height-16 mb-rem-0_5 overflow-hidden text-overflow-ellipsis">{{ location.name }}</p>
+    <p class="font-12 font-weight-400 line-height-14 color-grey-500">{{ location.address.street_1 }}</p>
+  </div>
+
+  <footer class="location-card__footer width-100 border-top-1 d-flex justify-content-end align-items-center px-rem-1">
+    <button (click)="delete.emit(location)" *ngIf="!isOnlyOneLocation" mat-icon-button class="mat-icon-button--stroked mr-px-10">
+      <mat-icon svgIcon="trash-blue" class="trash-blue-icon"></mat-icon>
+    </button>
+    <button (click)="edit.emit(location)" mat-icon-button class="mat-icon-button--stroked">
+      <mat-icon svgIcon="pencil-blue" class="pencil-blue-icon"></mat-icon>
+    </button>
+  </footer>
+
+</div>

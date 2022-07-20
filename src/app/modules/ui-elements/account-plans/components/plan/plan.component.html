@@ -1,0 +1,109 @@
+
+<div class="plan mr-rem-2_5 mb-rem-2_5" [ngClass]="{ 'plan--selected': plan.isSelected && !isCurrentPlan }">
+
+  <header class="plan__title width-100 d-flex" [ngClass]="{ 'current-plan': isCurrentPlan }">
+    <div class="w-50">
+      <p class="font-12 color-grey-500 mb-rem-1 font-weight-400" *ngIf="isCurrentPlan">Current Plan</p>
+    	<p class="font-24 font-weight-500">{{ plan.title | uppercase }}</p>
+    </div>
+    <div class="d-flex w-50 justify-content-end" *ngIf="isCurrentPlan">
+      <div class="plan__card-menu d-flex justify-content-center align-items-center">
+        <button [matMenuTriggerFor]="menu"
+          mat-icon-button
+          class="with-border dots-icon">
+          <mat-icon svgIcon="dots" class="dots"></mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button
+            (click)="planChange.emit(plan)"
+            class="sm-text"
+            mat-menu-item >
+            <mat-icon class="sm-icon" svgIcon="change-plan"></mat-icon>Change plan
+          </button>
+          <button
+            (click)="planCancel.emit(plan)"
+            class="sm-text"
+            mat-menu-item>
+            <mat-icon class="sm-icon" svgIcon="cancel-subscription"></mat-icon>Cancel subscription
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </header>
+
+  <div class="plan__location-qty width-100 d-flex align-items-center mb-rem-0_75">
+    <i class="plan__pointer height-100 d-flex"></i>
+    <span class="font-14 font-weight-bold">1</span>
+    <span class="font-14 font-weight-400">&nbsp;location</span>
+  </div>
+
+  <div *ngIf="!isCurrentPlan && showLocationsControls" class="width-100 d-flex align-items-center">
+    <app-qty-toggler [qty]="plan.additional_location_qty" (qtyChange)="qtyChange.emit({ qty: $event, plan: plan })"></app-qty-toggler>
+    <span class="d-flex font-14 font-weight-400 mx-px-10">additional locations</span>
+  </div>
+
+  <div *ngIf="(plan.additional_location_qty > 0 && isCurrentPlan) || !showLocationsControls" class="plan__location-qty width-100 d-flex align-items-center mb-rem-0_75">
+    <i class="plan__plus height-100 d-flex"></i>
+    <span class="font-14 font-weight-bold mt-px-1">{{ plan.additional_location_qty }}</span>
+    <span class="font-14 font-weight-400 mt-px-1 letter-spacing-primary">&nbsp;additional locations</span>
+  </div>
+
+
+  <ul class="width-100 d-flex flex-column pb-rem-1 mt-rem-1_5 border-bottom-1 border-color-grey-100">
+    <li *ngFor="let feature of plan.features; let first = first;" class="d-flex align-items-center mt-rem-0_75" [ngClass]="{ 'mt-0': first }">
+      <i class="plan__check d-flex" [ngClass]="{ 'plan__check--is-included': feature.isIncluded, 'plan__check--not-included': !feature.isIncluded }"></i>
+      <span class="font-14">{{ feature.name }}</span>
+    </li>
+  </ul>
+
+  <div class="width-100 d-flex flex-column mt-rem-0_75 mb-rem-1_5">
+    <p class="font-12 font-weight-400">
+      <span>Invoice total:</span>
+    </p>
+    <p *ngIf="plan.additional_location_qty > 0" class="mt-rem-0_75">
+      <span class="font-weight-bold">${{ plan.additional_location_price / 100 }}</span>
+      <span class="font-weight-400"> x{{ plan.additional_location_qty }} additional locations</span>
+    </p>
+    <p class="font-14 mt-rem-0_75">
+      <span class="font-weight-bold">${{ plan.price / 100 }} </span>
+      <span class="font-weight-400">{{ plan.title | uppercase }} plan</span>
+    </p>
+    <p class="font-24 font-weight-bold mt-rem-1" [ngClass]="{ 'color-green': (plan.isSelected || !isAnyPlanSelected) && !promo }">
+      <span [ngClass]="{ 'text-decoration-line-through': promo }">${{ plan | planPrice:plan.additional_location_qty | number:'1.2-2' }}</span>
+      <span class="ml-rem-0_5 color-grey-500 font-12 font-weight-400">per 30 days</span>
+    </p>
+    <p *ngIf="promo" class="mt-rem-1 color-green">
+      <span *ngIf="(plan | planDiscount:promo) === 0" class="font-24 font-weight-bold mr-rem-0_5">FREE</span>
+      <span *ngIf="(plan | planDiscount:promo) !== 0" class="font-24 font-weight-bold">${{ plan | planDiscount:promo | number:'1.2-2' }} </span>
+      <span class="color-grey-500 font-12 font-weight-400">{{ promo.description }}</span>
+    </p>
+  </div>
+
+  <div class="width-100 d-flex" *ngIf="!isCurrentPlan">
+    <button
+      mat-stroked-button
+      *ngIf="!plan.isSelected"
+      (click)="selected.emit({ plan: plan })"
+      class="up-prime-3"
+      [ngClass]="{ 'up-prime-3': isAnyPlanSelected, 'up-prime-1': !isAnyPlanSelected }"
+    >SELECT THIS PLAN</button>
+    <button mat-flat-button *ngIf="plan.isSelected" class="up-prime-2">
+      <mat-icon svgIcon="check-circle-white" class="check-circle-white-icon"></mat-icon>SELECTED
+    </button>
+    <button mat-button class="font-weight-400 ml-rem-0_75">
+      <mat-icon svgIcon="info-small" class="info-small-icon"></mat-icon>Details
+    </button>
+  </div>
+
+  <div *ngIf="isCurrentPlan" class="flex-grow-1 progress-bar-wrapper">
+    <div class="d-flex justify-content-between font-12 color-grey-500 mb-px-6">
+      <div>{{ plan.start | date: 'MM.dd.yyyy' }}</div>
+      <div>{{ daysLeft }} days left</div>
+      <div>{{ plan.end | date: 'MM.dd.yyyy' }}</div>
+    </div>
+    <app-progress-bar *ngIf="promo" plh="0" [currentValue]="progressBarValue" color="primary"></app-progress-bar>
+    <app-progress-bar *ngIf="!promo" plh="0" [currentValue]="progressBarValue" color="accent"></app-progress-bar>
+
+  </div>
+
+</div>

@@ -1,0 +1,35 @@
+@import "~@angular/material/theming";
+
+@mixin uptracker-typography($config) {
+  h1 {
+    @include mat-typography-level-to-styles($config, headline);
+  }
+  h2 {
+    @include mat-typography-level-to-styles($config, title);
+  }
+  h3 {
+    @include mat-typography-level-to-styles($config, subheading-2);
+  }
+  h4 {
+    @include mat-typography-level-to-styles($config, subheading-1);
+  }
+  p {
+    @include mat-typography-level-to-styles($config, body-1);
+  }
+  strong {
+    @include mat-typography-level-to-styles($config, body-2);
+    font-weight: 500;
+  }
+  .mat-button {
+    @include mat-typography-level-to-styles($config, button);
+  }
+  button {
+    @include mat-typography-level-to-styles($config, button);
+  }
+  .sm-text {
+    @include mat-typography-level-to-styles($config, caption);
+  }
+  .secondary-color {
+    color: map-get($uptracker-brown, 400);
+  }
+}

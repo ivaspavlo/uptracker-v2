@@ -1,0 +1,25 @@
+
+@import '_colors';
+
+[type="file"] {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+[type="file"] + label {
+  padding: 0 46px 0 21px;
+  border: 1px solid mat-color($uptracker-brown, 100);
+  color: map-get($uptracker-blue, 400);
+  transition: all 0.3s;
+  &:after {
+    position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%);
+    background: center / contain no-repeat url('/assets/img/svg/upload-icon.svg');
+    width: 22px;
+    height: 22px;
+    display: block;
+    content: '';
+  }
+}    
+    

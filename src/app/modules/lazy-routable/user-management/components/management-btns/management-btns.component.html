@@ -1,0 +1,12 @@
+
+<ng-container *ngFor="let btn of btns; let first = first;">
+  <button
+    mat-icon-button
+    *ngIf="tabName === btn.tabName"
+    (click)="btn.action.emit()"
+    [matTooltip]="btn.tooltip"
+    [ngClass]="{'ml-1 ml-md-4': !first}"
+    class="mat-icon-button--stroked">
+      <mat-icon [svgIcon]="btn.iconName" [ngClass]="btn.iconClass"></mat-icon>
+  </button>
+</ng-container>

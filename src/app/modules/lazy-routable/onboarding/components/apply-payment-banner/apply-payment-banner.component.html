@@ -1,0 +1,9 @@
+
+<div
+  [ngClass]="{ 'apply-payment--is-visible': isCurrentStepComplete }"
+  class="apply-payment pos-fixed d-flex align-items-center b-radius-4 bg-white p-rem-1 pl-rem-1_5">
+    <figure class="apply-payment__img mr-rem-1_5">
+      <img src="/assets/img/svg/hand-card.svg" alt="Apply Payment">
+    </figure>
+    <p class="line-height-16 letter-spacing-primary font-14">By clicking next you apply payment from your card VISA **** {{ paymentCardLastDigits }}</p>
+</div>

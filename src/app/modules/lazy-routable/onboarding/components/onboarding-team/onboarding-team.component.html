@@ -1,0 +1,20 @@
+
+<section class="max-width-600 row no-gutters">
+
+  <header class="col-12 mb-rem-2">
+    <p class="color-grey-500 letter-spacing-primary font-weight-400 line-height-16">Here you can add your team members. You can edit your locations on the “Users” page at any time.</p>
+  </header>
+
+  <div class="col-12">
+    <app-multi-chips [clear$]="clear$.asObservable()" (changeChips)="emails = $event"></app-multi-chips>
+  </div>
+
+  <div class="col-12 d-flex justify-content-start mt-rem-1_5">
+    <button
+      mat-flat-button color="primary"
+      [disabled]="!emails || !emails.length"
+      [appSpinner]="isLoading"
+      (click)="onSendInvite()">{{ !emails || emails.length < 2 ? 'SEND INVITE' : 'SEND INVITES' }}</button>
+  </div>
+
+</section>

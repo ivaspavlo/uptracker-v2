@@ -1,0 +1,15 @@
+
+.img-square {
+  width: 145px; height: 145px;
+  border: 1px dashed transparent;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 4px;
+  overflow: hidden;
+  @include m('sm') { height: 145px; width: 145px; }
+  @include m('md') { height: 180px; width: 180px; }
+  @include m('lg') { height: 200px; width: 200px; }
+  @include m('empty') {
+    border-color: map-get($uptracker-brown, 100);
+    background-color: map-get($uptracker-brown, 50);
+  }
+}

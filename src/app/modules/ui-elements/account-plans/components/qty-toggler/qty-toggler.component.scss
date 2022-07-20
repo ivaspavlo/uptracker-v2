@@ -1,0 +1,27 @@
+
+@import 'mixins/_all';
+@import '_colors';
+
+.toggler {
+  @include e('qty') { width: 24px; justify-content: center; }
+  @include e('btn') {
+    width: 14px; height: 14px;
+    border: 2px solid mat-color($uptracker-blue, 400);
+    border-radius: 2px;
+    transition: .3s;
+    cursor: pointer;
+    &:before {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px; height: 8px;
+      content: '';
+    }
+    @include m('minus') { &:before { background: center / contain no-repeat url('/assets/img/svg/minus-blue.svg'); } }
+    @include m('plus') { &:before { background: center / contain no-repeat url('/assets/img/svg/plus-blue.svg'); } }
+    &:hover {
+      background-color: mat-color($uptracker-blue, 400);
+      &.toggler__btn--minus { &:before { background: center / contain no-repeat url('/assets/img/svg/minus-white.svg'); } }
+      &.toggler__btn--plus { &:before { background: center / contain no-repeat url('/assets/img/svg/plus-white.svg'); } }
+    }
+  }
+}

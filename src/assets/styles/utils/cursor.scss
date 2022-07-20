@@ -1,0 +1,20 @@
+
+@import 'mixins/_all';
+
+.cursor-pointer { cursor: pointer; }
+
+@include sm {
+  .cursor-sm-pointer { cursor: pointer; }
+}
+
+@include md {
+  .cursor-md-pointer { cursor: pointer; }
+}
+
+@include lg {
+  .cursor-lg-pointer { cursor: pointer; }
+}
+
+@include xl {
+  .cursor-xl-pointer { cursor: pointer; }
+}

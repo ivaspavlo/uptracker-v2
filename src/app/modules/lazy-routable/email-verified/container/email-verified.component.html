@@ -1,0 +1,18 @@
+
+<section *ngIf="(onboardingEmailVerifyRes$ | async) as verifyRes" class="container-fluid height-100 width-100">
+  <div class="row no-gutters height-100 width-100">
+    <div class="col-12 d-flex justify-content-center align-items-center flex-column">
+      <figure>
+        <img *ngIf="verifyRes?.valid" src="/assets/img/svg/email-verified.svg" alt="Email was verified">
+        <img *ngIf="!verifyRes?.valid" src="/assets/img/svg/email-not-verified.svg" alt="Email was not verified">
+      </figure>
+      <p class="font-20 font-weight-bold line-height-24 mt-rem-2 mb-rem-0_75">
+        <span *ngIf="verifyRes?.valid">Thank you for verifying your email address. You can close this window and continue using UP-tracker.</span>
+        <span *ngIf="!verifyRes?.valid">There was an error with you email verification. Please contact UP-tracker support.</span>
+      </p>
+      <p class="font-14 font-weight-400 line-height-18 color-grey-500">
+        <span>You can continue setting up your profile</span>
+      </p>
+    </div>
+  </div>
+</section>

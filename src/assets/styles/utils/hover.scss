@@ -1,0 +1,25 @@
+
+@import 'mixins/_all';
+
+.hover-opacity { &:hover { opacity: .6; } }
+.hover-black { &:hover { color: rgba(0,0,0,.6); } }
+
+@include sm {
+  .hover-sm-opacity { &:hover { opacity: .6; } }
+  .hover-sm-black { &:hover { color: rgba(0,0,0,.6); } }
+}
+
+@include md {
+  .hover-md-opacity { &:hover { opacity: .6; } }
+  .hover-md-black { &:hover { color: rgba(0,0,0,.6); } }
+}
+
+@include lg {
+  .hover-md-opacity { &:hover { opacity: .6; } }
+  .hover-lg-black { &:hover { color: rgba(0,0,0,.6); } }
+}
+
+@include xl {
+  .hover-md-opacity { &:hover { opacity: .6; } }
+  .hover-xl-black { &:hover { color: rgba(0,0,0,.6); } }
+}

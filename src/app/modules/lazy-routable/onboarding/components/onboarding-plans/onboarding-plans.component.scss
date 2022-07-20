@@ -1,0 +1,8 @@
+
+@import 'mixins/_all';
+
+.promo {
+  height: 60px;
+  @include e('form-field') { width: 316px; }
+  @include e('warn') { transform: translateY(3px); }
+}

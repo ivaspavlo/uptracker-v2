@@ -1,0 +1,65 @@
+<div class="card-wrapper bg-grey-A500 b-radius-4 mb-3 w-100">
+
+  <div class="row no-gutters">
+    <div class="col card-image">
+      <app-credit-card [card]="card"></app-credit-card>
+    </div>
+    <div class="col">
+      <div class="row no-gutters card-title">
+        <div class="col d-flex p-0 align-items-center">
+          <div class="mr-auto width-px-350">
+            <h3 class="font-weight-600 font-18 color-primary text-truncate">{{ card.card_name }}</h3>
+          </div>
+
+          <div class="card-menu">
+            <button [matMenuTriggerFor]="menu" mat-icon-button
+              class="with-border dots-icon">
+              <mat-icon svgIcon="dots" class="dots"></mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button
+                class="sm-text"
+                mat-menu-item (click)="editCard(card)">
+                <mat-icon class="sm-icon" svgIcon="edit"></mat-icon>Edit
+              </button>
+              <button *ngIf="editable && !card.active"
+                class="sm-text"
+                mat-menu-item (click)="deleteCard(card)">
+                <mat-icon class="sm-icon" svgIcon="delete-small"></mat-icon>Delete
+              </button>
+            </mat-menu>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row no-gutters d-flex">
+        <div class="mr-rem-1_5">
+          <p class="font-weight-100 color-grey-600">{{ card.brand | uppercase }} <strong class="color-primary">{{ card.last4 }}</strong></p>
+        </div>
+        <div>
+          <p class="font-weight-100 color-grey-600">Expires <strong class="color-primary">{{ card.exp_month | number:'2.0' }}/{{ card.exp_year }}</strong></p>
+        </div>
+        <div
+          *ngIf="card.active"
+          class="col d-flex ml-auto activate-button">
+          <p class="color-green sm-text ml-auto">Active card</p>
+          <div class="pl-2 d-flex align-items-center"><mat-icon svgIcon="check-circle-green" class="sm-icon"></mat-icon></div>
+        </div>
+        <div
+        *ngIf="!card.active"
+          class="col d-flex ml-auto">
+          <button
+            class="set-active-btn activate-button"
+            (click)="setCardActive(card)"
+            mat-flat-button>
+            <p class="sm-text ml-auto color-grey-600">Set to active</p>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

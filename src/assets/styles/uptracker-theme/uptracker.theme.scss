@@ -1,0 +1,75 @@
+
+@import '~@angular/material/theming';
+@import '../../../app/core/components/sidebar/sidebar-theme.scss';
+@import '../../../app/core/components/header/header-theme.scss';
+@import './uptracker-forms.theme.scss';
+@import './uptracker-typography.theme.scss';
+@import './uptracker-tabs.theme.scss';
+@import './uptracker-buttons.theme.scss';
+@import './uptracker-icons.theme.scss';
+@import './uptracker-table.theme.scss';
+@import './uptracker-modal.theme.scss';
+@import './uptracker-toaster.theme.scss';
+@import './uptracker-progress-bar.theme.scss';
+@import './uptracker-checkbox.theme.scss';
+@import './uptracker-menu.theme.scss';
+@import '_colors';
+
+$uptracker-typography: mat-typography-config(
+  $font-family: 'Rubik, sans-serif',
+
+  $display-4: mat-typography-level(96px, 112px, 300, $letter-spacing: -0.05em),
+  $display-3: mat-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+  $display-2: mat-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+  $display-1: mat-typography-level(34px, 40px, 400),
+
+  $headline: mat-typography-level(28px, 28px, 500),
+  $title: mat-typography-level(24px, 24px, bold),
+  $subheading-2: mat-typography-level(20px, 20px, 500),
+  $subheading-1: mat-typography-level(15px, 15px, 400),
+  $body-2: mat-typography-level(14px, 14px, bold),
+  $body-1: mat-typography-level(14px, 14px, 300),
+  $caption: mat-typography-level(12px, 16px, 400),
+  $button: mat-typography-level(14px, 14px, 500),
+  $input: mat-typography-level(16px, 16px),
+);
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+@mixin uptracker-theme($theme, $uptracker-typography) {
+  @include sidebar-nav-theme($theme);
+  @include header-theme($theme);
+  @include forms-theme($theme);
+  @include toaster-theme($theme);
+  @include buttons-theme($theme);
+  @include icons-theme($theme);
+  @include tabs-theme($theme);
+  @include uptracker-typography($uptracker-typography);
+  @include table-theme($theme);
+  @include modal-theme($theme);
+  @include progress-bar-theme($theme);
+  @include checkbox-theme($theme);
+  @include menu-theme($theme);
+}
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$uptracker-app-primary: mat-palette($uptracker-blue, 400);
+$uptracker-app-accent: mat-palette($uptracker-blue, 400);
+$uptracker-app-warn: mat-palette($uptracker-red, 400);
+
+$uptracker-app-theme: mat-light-theme(
+  $uptracker-app-primary,
+  $uptracker-app-accent,
+  $uptracker-app-warn
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($uptracker-app-theme);
+@include uptracker-theme($uptracker-app-theme, $uptracker-typography);

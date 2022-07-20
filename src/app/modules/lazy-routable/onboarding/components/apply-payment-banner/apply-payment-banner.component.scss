@@ -1,0 +1,24 @@
+
+@import '_z-index';
+@import 'mixins/_all';
+
+.apply-payment {
+  width: 252px; height: 80px;
+  right: -300px; bottom: 60px;
+  opacity: 0;
+  z-index: $z-index-apply-payment-tooltip;
+  border: 1px solid #DFE3F3;
+  transition: .3s;
+  &:after {
+    display: block;
+    width: 14px; height: 12px;
+    position: absolute; bottom: -9px; right: 20px;
+    background: center / contain no-repeat url('/assets/img/png/apply-payment-triangle.png');
+    content: '';
+  }
+  @include m('is-visible') { opacity: 1; right: 55px; }
+  @include e('img') {
+    width: 28px; height: 32px;
+    background: center / contain no-repeat url('/assets/img/svg/hand-card.svg');
+  }
+}

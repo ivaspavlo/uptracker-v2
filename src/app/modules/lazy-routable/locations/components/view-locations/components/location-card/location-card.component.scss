@@ -1,0 +1,25 @@
+
+@import 'mixins/_all';
+
+.location-card {
+  width: 225px;
+  height: 245px;
+  border-color: #F0F0F0;
+  box-shadow: 0px 8px 8px -6px rgba(155, 181, 215, 0.2);
+  @include e('view') {
+    height: 100px;
+    border-color: #F0F0F0;
+    background-color: #F4F6FC;
+  }
+  @include e('info') {
+    height: 88px;
+  }
+  @include e('footer') {
+    height: 56px;
+    border-color: #F4F6FC;
+  }
+}
+
+.mr-px-10 {
+  margin-right: 10px !important;
+}

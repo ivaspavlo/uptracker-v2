@@ -1,0 +1,4 @@
+
+export enum PROMO_TYPES {
+  FREE_PERIOD = 'FIRSTFREE'
+}

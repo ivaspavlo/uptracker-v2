@@ -1,0 +1,29 @@
+
+<section class="container-fluid d-flex flex-column height-100 px-rem-4">
+
+  <app-auth-header title="Enter your email" subTitle="Please enter your email. The link to change password will be sent to this email."></app-auth-header>
+
+  <form [formGroup]="form" (submit)="onSubmit()" class="row no-gutters">
+    <mat-form-field appearance="outline" class="col-12 form-field-wrapper">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email_address"
+        placeholder="Email address">
+      <mat-error>{{ form.get('email_address').errors | inputError:emailInputErrorsMap }}</mat-error>
+    </mat-form-field>
+    <div class="col-12 mt-rem-0_75">
+      <div class="row no-gutters d-flex justify-content-start">
+        <button mat-flat-button color="primary" [appSpinner]="isLoading$ | async" [disabled]="!form.valid" class="col-5 send-link-btn">SEND LINK</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="row no-gutters flex-grow-1 align-items-end pos-relative">
+    <div class="pos-absolute bottom-0">
+      <button mat-flat-button [routerLink]="['/auth/login']" class="up-mini-1 pos-absolute"><mat-icon svgIcon="arrow-left-small" class="mr-2"></mat-icon>Back to login</button>
+    </div>
+  </div>
+
+</section>

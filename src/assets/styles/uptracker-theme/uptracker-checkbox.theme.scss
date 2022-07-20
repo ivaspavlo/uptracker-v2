@@ -1,0 +1,17 @@
+
+@import "~@angular/material/theming";
+
+@mixin checkbox-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .mat-checkbox.up-checkbox {
+    height: 18px;
+    .mat-checkbox-inner-container { height: 18px; width: 18px; margin-right: 11px; }
+    .mat-checkbox-layout .mat-checkbox-label { line-height: 18px; }
+    .mat-checkbox-layout { transform: translateY(-2px); }
+    .mat-checkbox-label { font-size: 14px; }
+    .mat-checkbox-frame { border-color: #C8D1EF; }
+  }
+}

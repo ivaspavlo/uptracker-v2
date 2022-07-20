@@ -1,0 +1,12 @@
+
+<section class="d-flex flex-column pos-relative">
+
+  <app-close-modal-btn (closeModal)="dialogRef.close(false)"></app-close-modal-btn>
+
+  <app-modal-header [titles]="data.titles"></app-modal-header>
+
+  <footer class="d-flex justify-content-end width-100 mt-rem-2">
+    <app-btn-panel [btnNames]="data.btnNames" (cancel)="dialogRef.close(false)" (confirm)="dialogRef.close(true)"></app-btn-panel>
+  </footer>
+
+</section>

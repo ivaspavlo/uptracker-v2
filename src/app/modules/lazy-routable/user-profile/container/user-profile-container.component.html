@@ -1,0 +1,100 @@
+
+<section class="container-fluid d-flex flex-column p-0 height-100" *ngIf="form">
+
+  <header class="row no-gutters bg-primary border-bottom-1 border-color-grey-A300">
+    <app-view-header title="Profile"></app-view-header>
+  </header>
+
+  <main class="row no-gutters p-rem-2_5 flex-grow-1">
+
+    <div class="d-flex flex-column align-items-center pr-rem-2">
+      <figure
+      [appSpinner]="isLoading$ | async"
+      class="img-square" [ngClass]="{ 'img-square--empty': !ctrls[ctrlNames.avatar].value }">
+        <img *ngIf="!ctrls[ctrlNames.avatar].value" src="/assets/img/svg/profile-icon.svg" alt="Avatar Placeholder">
+        <img
+          *ngIf="ctrls[ctrlNames.avatar].value"
+          [src]="ctrls[ctrlNames.avatar].value" class="width-100" alt="Avatar">
+      </figure>
+      <button
+        mat-flat-button color="primary"
+        (click)="onEditAvatar()"
+        class="up-mini-2 my-3"
+      ><mat-icon svgIcon="user-square" class="user-square-icon"></mat-icon>Edit photo</button>
+    </div>
+
+    <div class="d-flex flex-grow-1">
+      <form [formGroup]="form" class="d-flex flex-column width-100 max-width-600">
+
+        <mat-form-field appearance="outline" class="width-100 form-field-wrapper">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            [formControlName]="ctrlNames.name"
+            placeholder="Please enter a name">
+          <mat-error>Name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="width-100 form-field-wrapper">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            required
+            type="email"
+            [formControlName]="ctrlNames.email_address"
+            placeholder="Please enter a name">
+          <mat-error>Email is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="width-100 form-field-wrapper">
+          <mat-label>Default Location</mat-label>
+          <mat-select [formControlName]="ctrlNames.default_location_id">
+            <mat-option *ngFor="let location of locations$ | async" [value]="location.id">{{ location.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="width-100">
+          <div class="row">
+
+            <mat-form-field appearance="outline" floatLabel="always" class="col-6 form-field-wrapper">
+              <mat-label>Phone Number</mat-label>
+              <app-tel-input [countryCodes]="countryCodes" [tel]="form.value" (changeTel)="onChangeTel($event)"></app-tel-input>
+              <mat-error>Phone number is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="col-6 form-field-wrapper">
+              <mat-label>Department</mat-label>
+              <mat-select [formControlName]="ctrlNames.department">
+                <mat-option *ngFor="let department of departments" [value]="department">{{ department }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+  </main>
+
+  <footer class="sticky-form-footer px-rem-2_5 py-2 d-flex justify-content-between">
+
+    <button
+      mat-stroked-button
+      (click)="onChangePassword()"
+      class="mb-2 mb-md-0"
+    >CHANGE PASSWORD<mat-icon svgIcon="lock" class="lock-icon ml-2"></mat-icon></button>
+
+    <button
+      type="submit"
+      mat-flat-button color="primary"
+      (click)="onSubmit()"
+      [appSpinner]="isLoading$ | async"
+      [disabled]="!form.valid || (this.isLoading$ | async)"
+    >SAVE CHANGES</button>
+
+  </footer>
+
+</section>

@@ -1,0 +1,9 @@
+
+:host { position: absolute; top: -5px; right: -5px; } // pos relative is required in the host parent component
+
+.modal-close-btn {
+  width: 24px; height: 24px;
+  transition: .3s;
+  background: center / contain no-repeat url('/assets/img/svg/times-icon.svg');
+  &:hover { opacity: .6; }
+}

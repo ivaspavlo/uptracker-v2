@@ -1,0 +1,7 @@
+
+<app-sidebar-nav
+  (switch)="onSwitchSidebar()"
+  [openClose]="collapsedState$ | async"
+  [navigation]="pages"
+  [adminNavigation]="adminPages">
+</app-sidebar-nav>

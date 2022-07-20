@@ -1,0 +1,153 @@
+
+@import '~@angular/material/theming';
+
+@mixin forms-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+    //basic fields height
+    mat-form-field.form-field-wrapper {
+      .mat-form-field-infix {
+        padding: 14px 0 18px 0;
+        border-top-width: 10px;
+      }
+      .mat-form-field-appearance-outline .mat-form-field-prefix,
+      .mat-form-field-appearance-outline .mat-form-field-suffix {
+        top: 0.25em;
+      }
+      .mat-form-field-wrapper {
+        margin: .25em 0 .42em;
+      }
+      div.mat-select-arrow-wrapper {
+        transform: translateY(0%);
+      }
+      .mat-form-field-suffix > .mat-icon {
+        transform: translateY(2px);
+        margin-right: 4px;
+      }
+      .mat-form-field-suffix > .mat-icon-button {
+        transform: translate(3px, 3px);
+      }
+      mat-icon {
+        color: map-get($uptracker-brown, 400);
+      }
+    }
+
+    .mat-error {
+      text-align: right;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-label {
+      margin-top: -0.15em;
+      color: map-get($uptracker-brown, 500);
+    }
+
+    //medium fields huight
+    .md-form-field-wrapper {
+
+      .mat-form-field-infix {
+        padding: 12px 0 10px 0;
+        border-top-width: 4px;
+      }
+      .mat-form-field-appearance-outline .mat-form-field-prefix,
+      .mat-form-field-appearance-outline .mat-form-field-suffix {
+        top: 0.25em;
+      }
+      .mat-form-field-wrapper {
+        margin: .25em 0 .42em;
+      }
+      .mat-select-arrow-wrapper {
+        transform: translateY(-2%);
+      }
+      .mat-form-field-suffix { top: .45em; }
+      .mat-form-field-suffix > .mat-icon { transform: translateY(2px); }
+
+      //static label position
+      .mat-form-field-label-wrapper {
+          top: -1.25em;
+         .mat-form-field-label {
+            margin-top: 0.2em;
+            color: map-get($uptracker-brown, 500);
+          }
+      }
+      //dynamic label position
+      &.mat-form-field-appearance-outline {
+        &.mat-form-field-can-float {
+          &.mat-form-field-should-float {
+            .mat-form-field-label, .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
+              top: 2.3em;
+            }
+          }
+        }
+      }
+      mat-icon {
+        color: map-get($uptracker-brown, 400);
+      }
+    }
+
+    //small fields height
+    .sm-form-field-wrapper {
+      .mat-select,
+      .mat-input-element {
+        font-size: 12px;
+      }
+      .mat-select {
+        padding-left: 8px;
+      }
+      .mat-form-field-appearance-outline .mat-form-field-prefix,
+      .mat-form-field-appearance-outline .mat-form-field-suffix {
+        top: 0.25em;
+      }
+      .mat-form-field-appearance-outline .mat-form-field-infix {
+        padding: 9px 0 9px 0;
+        border-top-width: 0px;
+      }
+      .mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+        transform: translateY(-5%);
+      }
+      .mat-select-arrow-wrapper {
+        background: url("../../img/svg/arrow-drop-down.svg") center;
+      }
+      .mat-select-arrow {
+        border-top: none;
+      }
+      .mat-icon {
+        height: 16px !important;
+        width: 16px !important;
+      }
+
+      &.bg-fill {
+        .mat-form-field-wrapper {
+          background-color: map-get($uptracker-brown, 200);
+        }
+      }
+
+      &.secondary-color {
+        .mat-select-value-text {
+          color: map-get($uptracker-brown, 500);
+        }
+      }
+    }
+
+
+    //form tabs
+    .mat-tab-group {
+      height: 100%;
+    }
+
+    .mat-tab-label {
+      padding: 0px;
+      margin: 0 15px;
+      min-width: 90px;
+    }
+
+    .mat-tab-label {
+      color: map-get($uptracker-brown, 500);
+      &.mat-tab-label-active {
+        opacity: 1;
+        color: map-get($uptracker-brown, 900);
+      }
+    }
+
+}

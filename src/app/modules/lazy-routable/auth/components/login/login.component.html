@@ -1,0 +1,52 @@
+
+<section class="container-fluid px-rem-4">
+
+  <app-auth-header title="Login" subTitle="Please login with your email address and password"></app-auth-header>
+
+  <form [formGroup]="form" class="row no-gutters">
+
+    <mat-form-field appearance="outline" class="col-12 form-field-wrapper">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email_address"
+        placeholder="Please enter an email">
+      <mat-error>{{ form.get('email_address').errors | inputError:emailInputErrorsMap }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="col-12 form-field-wrapper">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        [type]="showPwd ? 'text' : 'password'"
+        formControlName="password"
+        placeholder="Please enter a password">
+      <button type="button" tabindex="-1" mat-icon-button matSuffix (click)="$event.preventDefault(); showPwd = !showPwd">
+        <mat-icon class="eye-icon">{{ showPwd ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error>Password is required</mat-error>
+    </mat-form-field>
+
+    <p class="col-12 font-14">
+      <a [routerLink]="['/auth/forgot']" class="hover-opacity cursor-pointer font-weight-400">Forgot your password?</a>
+    </p>
+
+    <div class="col-12 mt-px-40">
+      <div class="row no-gutters d-flex justify-content-between">
+        <button
+          type="submit"
+          mat-flat-button
+          color="primary"
+          (click)="onLogin()"
+          [appSpinner]="isLoading$ | async"
+          [disabled]="!form.valid"
+          class="col-4 login-btns"
+        >LOGIN</button>
+        <button mat-stroked-button [routerLink]="['/auth/signin']" class="col-4 login-btns">SIGN UP</button>
+      </div>
+    </div>
+
+  </form>
+
+</section>

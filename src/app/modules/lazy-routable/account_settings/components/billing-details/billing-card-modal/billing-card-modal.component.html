@@ -1,0 +1,10 @@
+<app-billing-card-form
+  [fieldMap]="fieldMap"
+  [form]="form"
+  [title]="title"
+  [loading$]="loading$"
+  (closeModal)="closeModal()"
+  [stripeErrors]="errors$ | async"
+  (locationSelected)="onLocationSelected($event)"
+  (formSubmit)="onSubmit($event)">
+</app-billing-card-form>

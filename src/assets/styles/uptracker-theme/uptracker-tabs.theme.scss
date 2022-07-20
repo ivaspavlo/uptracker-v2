@@ -1,0 +1,48 @@
+
+@import '~@angular/material/theming';
+@import '_colors';
+
+@mixin tabs-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  app-root {
+    .mat-tab-group {
+      height: 100%;
+    }
+    .mat-tab-label {
+      height: 41px;
+      padding: 0px;
+      margin: 0 16px;
+      min-width: 0px;
+    }
+    .mat-tab-label {
+      font-weight: 400;
+      color: map-get($uptracker-brown, 500);
+      &.mat-tab-label-active {
+        opacity: 1;
+        font-weight: 500;
+        color: map-get($uptracker-brown, 900);
+      }
+    }
+    .mat-ripple-element {
+      opacity: 0;
+    }
+    .mat-tab-body-content {
+      overflow: hidden;
+    }
+  }
+
+  .mat-tab-header {
+    background-color: mat-color($uptracker-brown, 200);;
+    border-bottom: 1px solid map-get($uptracker-brown, A300);
+  }
+
+  .header-tabs {
+    .mat-tab-labels {
+      background-color: mat-color($uptracker-brown, 200);;
+      padding-left: 23px;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+
+<section class="container-fluid p-0 pos-relative">
+
+  <app-close-modal-btn (closeModal)="dialogRef.close(null)"></app-close-modal-btn>
+
+  <div class="row no-gutters d-flex flex-column">
+    <h3 class="font-20 font-weight-500 line-height-24">Delete Location</h3>
+    <p class="font-14 font-weight-400 color-grey-500 line-height-16 mt-rem-1 width-100 overflow-hidden text-overflow-ellipsis">
+      <span>Are you sure you want to delete</span>
+      <span class="color-primary font-weight-500"> {{ data.name }} </span>
+      <span>location?</span>
+    </p>
+  </div>
+
+  <div class="row no-gutters mt-rem-2 d-flex justify-content-end">
+    <button (click)="dialogRef.close(null)" mat-flat-button class="mr-4 font-weight-500">CANCEL</button>
+    <button (click)="dialogRef.close(data)" mat-flat-button color="warn">DELETE</button>
+  </div>
+
+</section>

@@ -1,0 +1,29 @@
+
+<section class="credit-card d-flex flex-column pos-relative b-radius-6 bg-black pt-px-10 pl-px-10 pb-rem-0_75 pr-rem-0_75">
+  <header class="width-100">
+    <p class="credit-card__name font-8 font-weight-bold color-white text-truncate">{{ holderName }}</p>
+  </header>
+  <figure class="credit-card__chip">
+    <img src="/assets/img/svg/card-chip.svg" alt="Credit Card Chip">
+  </figure>
+  <div class="width-100 d-flex justify-content-between flex-grow-1">
+    <p class="font-8 color-white">
+      <span>**** </span><span>{{ last4 }}</span>
+    </p>
+    <figure *ngIf="cardVendor === cardVendors.master" class="credit-card__master d-flex pos-absolute">
+      <img class="width-100" src="/assets/img/svg/mastercard.svg" alt="Mastercard Payment Card">
+    </figure>
+    <figure *ngIf="cardVendor === cardVendors.visa" class="credit-card__visa d-flex pos-absolute">
+      <img src="/assets/img/svg/visa.svg" alt="Visa Payment Card">
+    </figure>
+    <figure *ngIf="cardVendor === cardVendors.americanExpress" class="credit-card__discover d-flex pos-absolute">
+      <img src="/assets/img/svg/american-express.svg" alt="American Express Payment Card">
+    </figure>
+    <figure *ngIf="cardVendor === cardVendors.discover" class="credit-card__discover d-flex pos-absolute">
+      <img src="/assets/img/svg/discover.svg" alt="Discover Payment Card">
+    </figure>
+    <figure *ngIf="cardVendor === cardVendors.default" class="credit-card__default d-flex pos-absolute">
+      <img src="/assets/img/svg/default-card-vendor.svg" alt="Default Vendor">
+    </figure>
+  </div>
+</section>

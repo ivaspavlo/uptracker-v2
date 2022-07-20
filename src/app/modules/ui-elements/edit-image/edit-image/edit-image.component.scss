@@ -1,0 +1,16 @@
+
+@import '_colors';
+@import 'mixins/_all';
+
+.img-cropper {
+  height: 200px;
+  width: 100%;
+  position: relative;
+  display: flex; justify-content: center; align-items: center;
+  image-cropper {
+    height: 100%;
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    .source-image { border-radius: 4px; }
+  }
+}

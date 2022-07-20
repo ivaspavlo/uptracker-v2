@@ -1,0 +1,46 @@
+
+<section class="container-fluid p-0">
+
+  <div class="row no-gutters">
+
+    <header class="col-12">
+      <app-modal-header [titles]="[ 'Change Subscription Plan', 'By clicking “Confirm” you agree with changing your subscription plan.' ]"></app-modal-header>
+    </header>
+
+    <div class="col-12">
+
+      <div class="width-100 d-flex justify-content-between mt-rem-1_5">
+        <button class="plan-btn d-flex flex-column px-rem-1 pt-rem-0_75 pb-rem-1_5 b-0 b-radius-2 color-grey-500">
+          <span class="font-12 font-weight-400">Old Plan</span>
+          <span class="font-24 font-weight-500 mb-rem-1_5 mt-rem-1">{{ data.old.title | uppercase }}</span>
+          <span *ngIf="!data.promo" class="font-24 font-weight-bold">${{ data.old | planPrice:data.old.additional_location_qty | number:'1.2-2' }}</span>
+          <span *ngIf="data.promo && (data.old | planDiscount:data.promo) !== 0" class="font-24 font-weight-bold">${{ data.old | planDiscount:data.promo | number:'1.2-2' }}</span>
+          <span *ngIf="(data.old | planDiscount:data.promo) === 0" class="font-24 font-weight-bold">FREE</span>
+        </button>
+        <figure class="d-flex">
+          <img src="/assets/img/svg/shevron-grey-right.svg" alt="Change Plan Arrow">
+        </figure>
+        <button class="plan-btn d-flex flex-column px-rem-1 pt-rem-0_75 pb-rem-1_5 b-radius-2 color-grey-800">
+          <span class="font-12 font-weight-400 color-grey-500">New Plan</span>
+          <span class="font-24 font-weight-500 mb-rem-1_5 mt-rem-1">{{ data.new.title | uppercase }}</span>
+          <span *ngIf="!data.promo" class="font-24 font-weight-bold">${{ data.new | planPrice:data.new.additional_location_qty | number:'1.2-2' }}</span>
+          <span *ngIf="data.promo && (data.new | planDiscount:data.promo) !== 0" class="font-24 font-weight-bold">${{ data.new | planDiscount:data.promo | number:'1.2-2' }}</span>
+          <span *ngIf="(data.new | planDiscount:data.promo) === 0" class="font-24 font-weight-bold">FREE</span>
+        </button>
+      </div>
+
+    </div>
+
+    <footer class="col-12 mt-rem-2">
+      <app-btn-panel
+        (confirm)="onConfirm()"
+        (cancel)="dialogRef.close()"
+        [btnNames]="[ 'CANCEL', 'CONFIRM' ]"
+        [confirmDisabled]="false"
+        [isCancelBold]="false"
+      ></app-btn-panel>
+    </footer>
+
+  </div>
+
+</section>

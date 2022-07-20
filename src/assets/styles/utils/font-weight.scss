@@ -1,0 +1,43 @@
+
+@import 'mixins/_all';
+
+.font-weight-bold { font-weight: bold; }
+.font-weight-100 { font-weight: 100; }
+.font-weight-300 { font-weight: 300; }
+.font-weight-400 { font-weight: 400; }
+.font-weight-500 { font-weight: 500; }
+.font-weight-600 { font-weight: 600; }
+.font-weight-800 { font-weight: 800; }
+.font-weight-900 { font-weight: 900; }
+
+@include sm {
+  .font-weight-sm-bold { font-weight: bold; }
+  .font-weight-sm-100 { font-weight: 100; }
+  .font-weight-sm-300 { font-weight: 300; }
+  .font-weight-sm-400 { font-weight: 400; }
+  .font-weight-sm-500 { font-weight: 500; }
+}
+
+@include md {
+  .font-weight-md-bold { font-weight: bold; }
+  .font-weight-md-100 { font-weight: 100; }
+  .font-weight-md-300 { font-weight: 300; }
+  .font-weight-md-400 { font-weight: 400; }
+  .font-weight-md-500 { font-weight: 500; }
+}
+
+@include lg {
+  .font-weight-lg-bold { font-weight: bold; }
+  .font-weight-lg-100 { font-weight: 100; }
+  .font-weight-lg-300 { font-weight: 300; }
+  .font-weight-lg-400 { font-weight: 400; }
+  .font-weight-lg-500 { font-weight: 500; }
+}
+
+@include xl {
+  .font-weight-xl-bold { font-weight: bold; }
+  .font-weight-xl-100 { font-weight: 100; }
+  .font-weight-xl-300 { font-weight: 300; }
+  .font-weight-xl-400 { font-weight: 400; }
+  .font-weight-xl-500 { font-weight: 500; }
+}

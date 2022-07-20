@@ -1,0 +1,16 @@
+
+<section class="container-fluid pos-relative p-0">
+
+  <app-close-modal-btn (closeModal)="dialogRef.close(null)"></app-close-modal-btn>
+
+  <app-modal-header [titles]="[ 'Unsaved Data', 'Warning! You have not save your data. Do you wish to leave this page?' ]"></app-modal-header>
+
+  <div class="row no-gutters d-flex justify-content-end mt-rem-2">
+    <app-btn-panel
+      [btnNames]="['LEAVE WITHOUT SAVING', 'SAVE AND LEAVE']"
+      (cancel)="dialogRef.close(false)"
+      (confirm)="dialogRef.close(true)"
+    ></app-btn-panel>
+  </div>
+  
+</section>
